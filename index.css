@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    background-color: #161616;
+    text-align: center;
+    word-wrap: normal;
+}
+
+body {
+    color: white;
+    font-family: 'Sono';
+    padding-top: 2rem;
+    scale: 1.4;
+    height: 100%;
+}
+
+h3 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#socials a:visited, #socials a {
+    color: white;
+}
+
