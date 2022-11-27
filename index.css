@@ -1,24 +1,36 @@
-* {
-    box-sizing: border-box;
-    background-color: #161616;
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);    
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    word-wrap: normal;
 }
 
-body {
-    color: white;
-    font-family: 'Sono';
-    padding-top: 2rem;
-    scale: 1.4;
-    height: 100%;
+h1 {
+    font-size: 8vw;
 }
 
 h3 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2rem;
 }
 
 
-#socials a:visited, #socials a {
-    color: white;
+a {
+    text-decoration: underline;
+    color: #fff;
 }
 
+footer {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 2em;
+    font-size: 1.5rem;
+}
