@@ -3,14 +3,14 @@ import Card from "./Card.jsx";
 const CardFeed = () => {
   return (
     <div className="flex-center flex-wrap gap-5 my-3">
-        <Card
+      <Card
         name="Auburn University"
         dates="August 2023 - Present"
         data="Software Engineering Major at Auburn University"
         link="https://auburn.edu"
         picture={true}
         imgSource="/assets/images/auburn-logo.png"
-        />
+      />
       <Card
         name="Auburn Hacks"
         dates="August 2023 - Present"
