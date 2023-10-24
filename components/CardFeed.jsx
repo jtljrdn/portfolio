@@ -36,7 +36,7 @@ const CardFeed = () => {
       <Card
         name="Portfolio"
         data="This website! Made using Next.js, TailwindCSS, and Vercel"
-        link="jtlee.dev"
+        link="https://jtlee.dev"
         picture={false}
       />
     </div>

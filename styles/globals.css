@@ -73,6 +73,10 @@
 
 /* Tailwind Styles */
 
+.hover{
+  @apply transition ease-in-out hover:-translate-y-1 hover:scale-110  duration-200;
+}
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
