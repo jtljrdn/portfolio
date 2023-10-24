@@ -28,6 +28,12 @@ const CardFeed = () => {
         imgSource="/assets/images/chatdb.png"
       />
       <Card
+      name="CodeGPT"
+      data="Simple project that allows you to convert code from one language to another using OpenAI's API"
+      link="code-gpt-zeta.vercel.app"
+      picture={false}
+      />
+      <Card
         name="Promptopia"
         data="Simple Web App to store and share prompts for interacting with AI, made using MongoDB, Next.js, and TailwindCSS"
         link="https://promptopia-phi-seven.vercel.app/"
