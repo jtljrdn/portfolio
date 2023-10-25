@@ -18,7 +18,9 @@ const page = () => {
     <div>
       <section className="w-full flex-center flex-col mt-10">
         <h1 className="head_text blue_gradient text-center">Jordan Lee</h1>
-        <h2 className="sub_text green_gradient">Software Engineer</h2>
+        <h2 className="text-4xl font-extrabold text-gray-700 green_gradient">
+          Software Engineer
+        </h2>
         <p className="text-center desc mb-5">
           Welcome to my personal portfolio! Below are some of my personal
           experiences and projects.
