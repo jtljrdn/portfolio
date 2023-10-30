@@ -47,6 +47,7 @@ const page = () => {
         <span className="orange_gradient">Projects</span>
       </h2>
       <div>
+        { /* Would be really cool to create a database and API fetch request to build the cards dynamically */ }
         <CardFeed />
       </div>
     </div>
