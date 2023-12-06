@@ -22,7 +22,7 @@ const CardFeed = () => {
       <Card
         name="ChatDB.ai"
         dates="October 2023 - Present"
-        data="Web Developer for ChatDB.ai, a startup utilizing AI to analyze Postgres Databases without SQL"
+        data="Full-Stack Web Developer for ChatDB.ai, a startup utilizing AI to query Relational Databases using natural language."
         link="https://www.chatdb.ai"
         picture={true}
         imgSource="/assets/images/chatdb.png"
