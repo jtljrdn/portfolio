@@ -35,7 +35,7 @@ const CardFeed = () => {
       />
       <Card
         name="Cam-Counter Discord Bot"
-        data="Simple Discord bot I created to count the number of times my friend didn't join a call"
+        data="Simple Discord bot I created to count the number of times my friend didn't join a call. Written in Discord.js"
         link="https://github.com/jtljrdn/Cam-Counter-Public"
         picture={false}
       />
