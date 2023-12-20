@@ -34,9 +34,9 @@ const CardFeed = () => {
       picture={false}
       />
       <Card
-        name="Promptopia"
-        data="Simple Web App to store and share prompts for interacting with AI, made using MongoDB, Next.js, and TailwindCSS"
-        link="https://promptopia-phi-seven.vercel.app/"
+        name="Cam-Counter Discord Bot"
+        data="Simple Discord bot I created to count the number of times my friend didn't join a call"
+        link="https://github.com/jtljrdn/Cam-Counter-Public"
         picture={false}
       />
       <Card
