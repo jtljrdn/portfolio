@@ -30,19 +30,19 @@ const CardFeed = () => {
       <Card
       name="CodeGPT"
       data="Simple project that allows you to convert code from one language to another using OpenAI's API."
-      link="code-gpt-zeta.vercel.app"
+      link="https://code-gpt-zeta.vercel.app"
       picture={false}
       />
       <Card
         name="Cam-Counter Discord Bot"
-        data="Simple Discord bot I created to count the number of times my friend didn't join a call. Written in Discord.js."
+        data="Simple Discord Bot I created to count the number of times my friend didn't join a call. Written in Discord.js."
         link="https://github.com/jtljrdn/Cam-Counter-Public"
         picture={false}
       />
       <Card
         name="Portfolio"
         data="This website! Made using Next.js, TailwindCSS, and Vercel."
-        link="https://jtlee.dev"
+        link="/"
         picture={false}
       />
     </div>

@@ -11,14 +11,15 @@ import {
 import "@fortawesome/fontawesome-svg-core/styles.css";
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Link from "next/link";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 const page = () => {
   return (
     <div>
-      <section className="w-full flex-center flex-col mt-10">
+      <section className="w-full flex-center flex-col">
         <h1 className="head_text blue_gradient text-center">Jordan Lee</h1>
-        <h2 className="text-4xl font-extrabold text-gray-700 green_gradient">
+        <h2 className="text-4xl font-extrabold text-gray-700 green_gradient leading-normal ">
           Software Engineer
         </h2>
         <p className="text-center desc mb-5">
