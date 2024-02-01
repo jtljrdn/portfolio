@@ -28,15 +28,15 @@ const CardFeed = () => {
         imgSource="/assets/images/chatdb.png"
       />
       <Card
-      name="CodeGPT"
-      data="Simple project that allows you to convert code from one language to another using OpenAI's API."
-      link="https://code-gpt-zeta.vercel.app"
-      picture={false}
+        name="CodeGPT"
+        data="Simple project that allows you to convert code from one language to another using OpenAI's API."
+        link="https://code-gpt-zeta.vercel.app"
+        picture={false}
       />
       <Card
         name="CamBot Discord Bot"
-        data="Multipurpose utility Discord Bot. Written in Discord.js."
-        link="https://github.com/jtljrdn/Cam-Counter-Public"
+        data="Multipurpose utility Discord Bot. Written in Discord.js. Website made with Next.js, MongoDB, and TailwindCSS."
+        link="https://cambot.xyz"
         picture={false}
       />
       <Card
