@@ -16,7 +16,7 @@ const Card = ({ name, dates, data, link, picture, imgSource }) => {
     );
   } else {
     return (
-      <Link href={link}>
+      <Link href={link} target="blank">
         <div className="card w-72 bg-base-100 shadow-xl hover">
           <figure className="px-10 pt-10">
             <Image

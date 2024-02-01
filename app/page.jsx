@@ -1,4 +1,3 @@
-import CardFeed from "@/components/CardFeed";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedin,
@@ -31,18 +30,18 @@ const page = () => {
           Lets get in touch!
         </p>
         <div className="flex flex-row gap-5">
-          <a href="https://www.linkedin.com/in/jordan-lee-2bb996296/">
+          <Link href="https://www.linkedin.com/in/jordan-lee-2bb996296/" target="blank">
             <FontAwesomeIcon icon={faLinkedin} size="2xl" />
-          </a>
-          <a href="https://github.com/jtljrdn">
+          </Link>
+          <Link href="https://github.com/jtljrdn"  target="blank">
             <FontAwesomeIcon icon={faGithubSquare} size="2xl" />
-          </a>
-          <a href="https://twitter.com/jtljrdn">
+          </Link>
+          <Link href="https://twitter.com/jtljrdn"  target="blank">
             <FontAwesomeIcon icon={faSquareXTwitter} size="2xl" />
-          </a>
-          <a href="https://instagram.com/jordan.t.lee">
+          </Link>
+          <Link href="https://instagram.com/jordan.t.lee" target="blank">
             <FontAwesomeIcon icon={faInstagramSquare} size="2xl" />
-          </a>
+          </Link>
         </div>
       </section>
       <div className="divider"></div>
