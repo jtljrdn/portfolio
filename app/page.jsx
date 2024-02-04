@@ -25,18 +25,21 @@ const page = () => {
         <p className="text-center desc mb-5">
           Full-Stack Web Developer and Software Engineering Major at Auburn
           University. Working knowledge of React, Next.js, Node.js, Express,
-          MongoDB, FiraBase, Figma, and other full-stack technologies.
+          MongoDB, SupaBase, Figma, and other full-stack technologies.
           <br />
           Lets get in touch!
         </p>
         <div className="flex flex-row gap-5">
-          <Link href="https://www.linkedin.com/in/jordan-lee-2bb996296/" target="blank">
+          <Link
+            href="https://www.linkedin.com/in/jordan-lee-2bb996296/"
+            target="blank"
+          >
             <FontAwesomeIcon icon={faLinkedin} size="2xl" />
           </Link>
-          <Link href="https://github.com/jtljrdn"  target="blank">
+          <Link href="https://github.com/jtljrdn" target="blank">
             <FontAwesomeIcon icon={faGithubSquare} size="2xl" />
           </Link>
-          <Link href="https://twitter.com/jtljrdn"  target="blank">
+          <Link href="https://twitter.com/jtljrdn" target="blank">
             <FontAwesomeIcon icon={faSquareXTwitter} size="2xl" />
           </Link>
           <Link href="https://instagram.com/jordan.t.lee" target="blank">
