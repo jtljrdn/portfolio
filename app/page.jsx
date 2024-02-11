@@ -82,6 +82,12 @@ const page = () => {
           picture={false}
         />
         <Card
+          name="Infinite Crafter Clone"
+          data="A clone of the game Infinite Crafter. Made with React, Next.js, and OpenAI's API."
+          link="https://infinite-crafter-clone.vercel.app"
+          picture={false}
+        />
+        <Card
           name="CodeGPT"
           data="Simple project that allows you to convert code from one language to another using OpenAI's API."
           link="https://code-gpt-zeta.vercel.app"
