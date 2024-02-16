@@ -52,12 +52,12 @@ const page = () => {
       <h2 className="sub_text text-left mt-3">
         <span className="green_gradient">Experience</span>
       </h2>
-      <div className="flex flex-row gap-5 mt-2">
+      <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
         <Card
           name="Auburn Hacks"
           dates="August 2023 - Present"
           data="Technical Organizer and Web Developer for Auburn Hacks, Auburn Universities annual hackathon."
-          link="https://www.auburnhacks.com/"
+          link="https://auburnhacks.com/"
           picture={true}
           imgSource="/assets/images/auhacks-logo.png"
         />
@@ -74,7 +74,7 @@ const page = () => {
       <h2 className="sub_text text-left mt-3">
         <span className="orange_gradient">Projects</span>
       </h2>
-      <div className="flex flex-row gap-5 mt-2">
+      <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
         <Card
           name="CamBot.xyz"
           data="Multipurpose utility Discord Bot. Written in Discord.js. Website made with Next.js, MongoDB, and TailwindCSS."
@@ -104,7 +104,7 @@ const page = () => {
       <h2 className="sub_text text-left mt-3">
         <span className="blue_gradient">Education</span>
       </h2>
-      <div className="flex flex-row gap-5 mt-2">
+      <div className="flex flex-row gap-5 mt-2 pb-8">
         <Card
           name="Auburn University"
           dates="August 2023 - Present"
