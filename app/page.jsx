@@ -11,7 +11,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
-import Card from "@/components/Card";
+import { Card, CardBody, CardHeader, CardImage } from "@/components/Card";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 const page = () => {
@@ -53,66 +53,98 @@ const page = () => {
         <span className="green_gradient">Experience</span>
       </h2>
       <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
-        <Card
-          name="Auburn Hacks"
-          dates="August 2023 - Present"
-          data="Technical Organizer and Web Developer for Auburn Hacks, Auburn Universities annual hackathon."
-          link="https://auburnhacks.com/"
-          picture={true}
-          imgSource="/assets/images/auhacks-logo.png"
-        />
-        <Card
+        <Card href="https://auburnhacks.com">
+          <CardImage imgSource="/assets/images/auhacks-logo.png" />
+          <CardHeader
+            name="Auburn Hacks"
+            dates="August 2023 - Present"
+            title="Technical Director"
+          />
+          <CardBody>
+            <p>
+              Technical Director for Auburn Hacks, Alabama's largest hackathon.
+            </p>
+          </CardBody>
+        </Card>
+        {/* <Card
           name="ChatDB.ai"
           dates="October 2023 - Present"
           data="Full-Stack Web Developer for ChatDB.ai, a startup utilizing AI to query Relational Databases using natural language."
           link="https://www.chatdb.ai"
           picture={true}
           imgSource="/assets/images/chatdb.png"
-        />
+        /> */}
+        <Card href="https://www.chatdb.ai">
+          <CardImage imgSource="/assets/images/chatdb.png" />
+          <CardHeader
+            name="ChatDB.ai"
+            dates="October 2023 - March 2024"
+            title="Web Developer"
+          />
+          <CardBody>
+            <p>
+              Helped Auburn University Alum with startup ChatDB.ai, a tool to
+              utilize AI to query Relational Databases using natural language.
+            </p>
+          </CardBody>
+        </Card>
       </div>
 
       <h2 className="sub_text text-left mt-3">
         <span className="orange_gradient">Projects</span>
       </h2>
       <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
-        <Card
-          name="CamBot.xyz"
-          data="Multipurpose utility Discord Bot. Written in Discord.js. Website made with Next.js, MongoDB, and TailwindCSS."
-          link="https://cambot.xyz"
-          picture={false}
-        />
-        <Card
-          name="Infinite Craft Clone"
-          data="A clone of the game Infinite Craft. Made with React, Next.js, and OpenAI's API."
-          link="https://infinite-craft-clone.vercel.app/"
-          picture={false}
-        />
-        <Card
-          name="CodeGPT"
-          data="Simple project that allows you to convert code from one language to another using OpenAI's API."
-          link="https://code-gpt-zeta.vercel.app"
-          picture={false}
-        />
-
+        {/* 
         <Card
           name="Portfolio"
           data="This website! Made using Next.js, TailwindCSS, and Vercel."
           link="/"
           picture={false}
-        />
+        /> */}
+        <Card href="https://cambot.xyz">
+          <CardImage imgSource="/assets/images/cambot.png" />
+          <CardHeader name="CamBot.xyz" title="Discord Bot" />
+          <CardBody>
+            <p>
+              Multipurpose utility Discord Bot. Written in Discord.js. Website
+              made with Next.js, MongoDB, and TailwindCSS.
+            </p>
+          </CardBody>
+        </Card>
+        <Card href="https://infinite-craft-clone.vercel.app/">
+          <CardHeader name="Infinite Craft Clone" title="AI Browser Game" />
+          <CardBody>
+            <p>
+              Clone of the game Infinite Craft. Made with React, Next.js, and
+              OpenAI's API.
+            </p>
+          </CardBody>
+        </Card>
+        <Card href="#">
+          <CardHeader name="Portfolio" title="Personal Website" />
+          <CardBody>
+            <p>This website! Made using Next.js, TailwindCSS, and Vercel.</p>
+          </CardBody>
+        </Card>
       </div>
       <h2 className="sub_text text-left mt-3">
         <span className="blue_gradient">Education</span>
       </h2>
       <div className="flex flex-row gap-5 mt-2 pb-8">
-        <Card
-          name="Auburn University"
-          dates="August 2023 - Present"
-          data="Software Engineering Major at Auburn University."
-          link="https://auburn.edu"
-          picture={true}
-          imgSource="/assets/images/auburn-logo.png"
-        />
+        <Card href="https://auburn.edu">
+          <CardImage imgSource="/assets/images/auburn-logo.png" />
+          <CardHeader
+            name="Auburn University"
+            dates="August 2023 - May 2027"
+            title="B.E Software Engineering"
+          />
+          <CardBody>
+            <p>
+              Activities and Societies: Auburn Hacks Technical Director, Auburn
+              Association of Computing Machinery (ACM) Secretary
+            </p>
+          </CardBody>
+        </Card>
       </div>
     </div>
   );
