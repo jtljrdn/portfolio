@@ -53,6 +53,28 @@ const page = () => {
         <span className="green_gradient">Experience</span>
       </h2>
       <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
+        {/* <Card href="https://flooranddecor.com">
+          <CardImage imgSource="/assets/images/f&d.png" />
+          <CardHeader
+            name="Floor & Decor"
+            dates="June 2025 - August 2025"
+            title="I.T. Intern"
+          />
+        </Card> */}
+        <Card href="https://https://www.eng.auburn.edu/icams/">
+          <CardImage imgSource="/assets/images/icams.png" />
+          <CardHeader
+            name="Auburn University, Samuel Ginn College of Engineering"
+            dates="January 2025 - Present"
+            title="Undergraduate Research Assistant"
+          />
+          <CardBody>
+            <p>
+              Worked with ICAMS faculty as a web developer to create a
+              distributed manufacturing system.
+            </p>
+          </CardBody>
+        </Card>
         <Card href="https://auburnhacks.com">
           <CardImage imgSource="/assets/images/auhacks-logo.png" />
           <CardHeader
