@@ -12,6 +12,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import { Card, CardBody, CardHeader, CardImage } from "@/components/Card";
+import { faEnvelope, faFile, faSquareEnvelope } from "@fortawesome/free-solid-svg-icons";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 const page = () => {
@@ -39,28 +40,31 @@ const page = () => {
           <Link href="https://github.com/jtljrdn" target="blank">
             <FontAwesomeIcon icon={faGithubSquare} size="2xl" />
           </Link>
-          <Link href="https://twitter.com/jtljrdn" target="blank">
-            <FontAwesomeIcon icon={faSquareXTwitter} size="2xl" />
-          </Link>
           <Link href="https://instagram.com/jordan.t.lee" target="blank">
             <FontAwesomeIcon icon={faInstagramSquare} size="2xl" />
           </Link>
+          <Link href="mailto:jordan@jtlee.dev" target="blank">
+            <FontAwesomeIcon icon={faSquareEnvelope} size="2xl" />
+          </Link>
         </div>
+        <Link href="assets/Lee-Jordan-Resume.pdf" className="underline">
+          Resume
+        </Link>
       </section>
       <div className="divider"></div>
 
       <h2 className="sub_text text-left mt-3">
         <span className="green_gradient">Experience</span>
       </h2>
-      <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
-        {/* <Card href="https://flooranddecor.com">
+      <div className="flex flex-row gap-5 mt-2 overflow-scroll pb-8">
+        <Card href="https://flooranddecor.com">
           <CardImage imgSource="/assets/images/f&d.png" />
           <CardHeader
             name="Floor & Decor"
             dates="June 2025 - August 2025"
-            title="I.T. Intern"
+            title="Incoming I.T. Intern"
           />
-        </Card> */}
+        </Card>
         <Card href="https://https://www.eng.auburn.edu/icams/">
           <CardImage imgSource="/assets/images/icams.png" />
           <CardHeader
@@ -88,14 +92,6 @@ const page = () => {
             </p>
           </CardBody>
         </Card>
-        {/* <Card
-          name="ChatDB.ai"
-          dates="October 2023 - Present"
-          data="Full-Stack Web Developer for ChatDB.ai, a startup utilizing AI to query Relational Databases using natural language."
-          link="https://www.chatdb.ai"
-          picture={true}
-          imgSource="/assets/images/chatdb.png"
-        /> */}
         <Card href="https://www.chatdb.ai">
           <CardImage imgSource="/assets/images/chatdb.png" />
           <CardHeader
@@ -116,13 +112,6 @@ const page = () => {
         <span className="orange_gradient">Projects</span>
       </h2>
       <div className="flex flex-row gap-5 mt-2 overflow-auto md:overflow-visible pb-8">
-        {/* 
-        <Card
-          name="Portfolio"
-          data="This website! Made using Next.js, TailwindCSS, and Vercel."
-          link="/"
-          picture={false}
-        /> */}
         <Card href="https://cambot.xyz">
           <CardImage imgSource="/assets/images/cambot.png" />
           <CardHeader name="CamBot.xyz" title="Discord Bot" />
