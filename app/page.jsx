@@ -12,7 +12,11 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
 import { Card, CardBody, CardHeader, CardImage } from "@/components/Card";
-import { faEnvelope, faFile, faSquareEnvelope } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faFile,
+  faSquareEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 const page = () => {
@@ -65,7 +69,7 @@ const page = () => {
             title="Incoming I.T. Intern"
           />
         </Card>
-        <Card href="https://https://www.eng.auburn.edu/icams/">
+        <Card href="https://www.eng.auburn.edu/icams/">
           <CardImage imgSource="/assets/images/icams.png" />
           <CardHeader
             name="Auburn University, Samuel Ginn College of Engineering"
