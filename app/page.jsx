@@ -1,22 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLinkedin,
-  faSquareXTwitter,
-  faGithubSquare,
-  faInstagramSquare,
-} from "@fortawesome/free-brands-svg-icons";
 // The following import prevents a Font Awesome icon server-side rendering bug,
 // where the icons flash from a very large icon down to a properly sized one:
 import "@fortawesome/fontawesome-svg-core/styles.css";
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from "@fortawesome/fontawesome-svg-core";
-import Link from "next/link";
 import { Card, CardBody, CardHeader, CardImage } from "@/components/Card";
-import {
-  faEnvelope,
-  faFile,
-  faSquareEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import Link from "next/link";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 const page = () => {
@@ -38,22 +28,21 @@ const page = () => {
           <Link
             href="https://www.linkedin.com/in/jordan-lee-2bb996296/"
             target="blank"
+            className="underline"
           >
-            <FontAwesomeIcon icon={faLinkedin} size="2xl" />
+            LinkedIn
           </Link>
-          <Link href="https://github.com/jtljrdn" target="blank">
-            <FontAwesomeIcon icon={faGithubSquare} size="2xl" />
+          <Link
+            href="https://github.com/jtljrdn"
+            target="blank"
+            className="underline"
+          >
+            GitHub
           </Link>
-          <Link href="https://instagram.com/jordan.t.lee" target="blank">
-            <FontAwesomeIcon icon={faInstagramSquare} size="2xl" />
-          </Link>
-          <Link href="mailto:jordan@jtlee.dev" target="blank">
-            <FontAwesomeIcon icon={faSquareEnvelope} size="2xl" />
+          <Link href="assets/Lee-Jordan-Resume.pdf" className="underline">
+            Resume
           </Link>
         </div>
-        <Link href="assets/Lee-Jordan-Resume.pdf" className="underline">
-          Resume
-        </Link>
       </section>
       <div className="divider"></div>
 

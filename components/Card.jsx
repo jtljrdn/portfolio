@@ -27,7 +27,7 @@ const CardHeader = ({ name, dates, title }) => {
 const CardImage = ({ imgSource }) => {
   return (
     <>
-      <Image src={imgSource} width={300} height={200} className="rounded-xl" />
+      <Image src={imgSource} width={300} height={200} className="rounded-xl" alt="Card image"/>
     </>
   );
 };
