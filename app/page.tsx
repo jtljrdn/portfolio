@@ -120,12 +120,13 @@ export default function Home() {
         </Card>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+      <Link href={"./blog"} className="text-muted-foreground">
+          <p>Blog</p>
+        </Link>
         <Link href={"./projects"} className="text-muted-foreground ">
           <p>Projects</p>
         </Link>
-        <Link href={"./blog"} className="text-muted-foreground">
-          <p>Blog</p>
-        </Link>
+
       </footer>
     </div>
   );
