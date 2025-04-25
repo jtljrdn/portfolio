@@ -1,8 +1,5 @@
 import ProjectsEntry from "@/components/ProjectsEntry";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-import { faFile } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 const page = () => {
@@ -14,8 +11,8 @@ const page = () => {
             <CardHeader className="border-b-2 pb-4">
               <p className="font-bold text-xl leading-3">Projects</p>
               <p className="text-muted-foreground text-sm mt-1 leading-4">
-                A list of my projects, some work and some don't. All code is
-                available on GitHub.
+                A list of my projects, some work and some don't. All
+                code is available on GitHub.
               </p>
             </CardHeader>
             <CardContent className="flex flex-col items-center sm:items-start">
