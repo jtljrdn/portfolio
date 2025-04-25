@@ -77,13 +77,13 @@ export default async function Blog({
           <h1 className={twJoin("text-center !font-bold")}>
             {post.metadata.title}
           </h1>
-
+          {post.metadata.date && (
+            <p className={`${styles.description} -mt-5 italic`}>Posted on {post.metadata.date}</p>
+          )}
           {post.metadata.description && (
             <p className={styles.description}>{post.metadata.description}</p>
           )}
-          {post.metadata.date && (
-            <p className={styles.description}>{post.metadata.date}</p>
-          )}
+
         </div>
 
         <article>
