@@ -52,7 +52,7 @@ export default function Home() {
                 <div className="flex flex-row justify-between">
                   <div>
                     <p className="leading-4">
-                      Software Engineer Intern - Mobile App Development
+                      Software Engineer Intern
                     </p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
                       Floor & Decor - Atlanta, GA
@@ -68,7 +68,8 @@ export default function Home() {
                 <div className="flex flex-row justify-between my-4">
                   <div>
                     <p className="leading-4">
-                      Undergraduate Research Assistant
+                      Undergraduate Research Assistant - Full-Stack Web
+                      Development
                     </p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
                       Auburn University, Samuel Ginn College of Engineering
