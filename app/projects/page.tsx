@@ -43,8 +43,8 @@ const page = () => {
         <Link href={"/"} className="text-muted-foreground">
           <p>Home</p>
         </Link>
-        <Link href={"./projects"} className="text-muted-foreground ">
-          <p>Projects</p>
+        <Link href={"./blog"} className="text-muted-foreground ">
+          <p>Blog</p>
         </Link>
       </footer>
     </div>

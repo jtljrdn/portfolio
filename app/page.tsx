@@ -51,9 +51,11 @@ export default function Home() {
 
                 <div className="flex flex-row justify-between">
                   <div>
-                    <p className="leading-4">Incoming SWE Intern</p>
+                    <p className="leading-4">
+                      Software Engineer Intern - Mobile App Development
+                    </p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
-                      Floor & Decor
+                      Floor & Decor - Atlanta, GA
                     </p>
                   </div>
                   <div className="text-right">
@@ -83,7 +85,7 @@ export default function Home() {
                   <div>
                     <p className="leading-4">Web Development Intern</p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
-                      ChatDB.ai
+                      ChatDB.ai - Remote
                     </p>
                   </div>
                   <div className="text-right">
@@ -102,7 +104,7 @@ export default function Home() {
                       Bachelor of Software Engineering
                     </p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
-                      Auburn University, Samuel Ginn College of Engineering
+                      Auburn University
                     </p>
                   </div>
                   <div className="text-right">
