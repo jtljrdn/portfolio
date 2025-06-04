@@ -51,9 +51,7 @@ export default function Home() {
 
                 <div className="flex flex-row justify-between">
                   <div>
-                    <p className="leading-4">
-                      Software Engineer Intern
-                    </p>
+                    <p className="leading-4">Software Engineer Intern</p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
                       Floor & Decor - Atlanta, GA
                     </p>
@@ -120,11 +118,14 @@ export default function Home() {
         </Card>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <Link href={"./blog"} className="text-muted-foreground">
-          <p>Blog</p>
+        <Link href={"./"} className="text-muted-foreground">
+          <p>Me</p>
         </Link>
         <Link href={"./projects"} className="text-muted-foreground ">
-          <p>Projects</p>
+          <p>My Projects</p>
+        </Link>
+        <Link href={"./blog"} className="text-muted-foreground ">
+          <p>My Blog</p>
         </Link>
       </footer>
     </div>

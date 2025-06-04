@@ -11,8 +11,8 @@ const page = () => {
             <CardHeader className="border-b-2 pb-4">
               <p className="font-bold text-xl leading-3">Projects</p>
               <p className="text-muted-foreground text-sm mt-1 leading-4">
-                A list of my projects, some work and some don't. All
-                code is available on GitHub.
+                A list of my projects, some work and some don't. All code is
+                available on GitHub.
               </p>
             </CardHeader>
             <CardContent className="flex flex-col items-center sm:items-start">
@@ -40,11 +40,14 @@ const page = () => {
         </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <Link href={"/"} className="text-muted-foreground">
-          <p>Home</p>
+        <Link href={"./"} className="text-muted-foreground">
+          <p>Me</p>
+        </Link>
+        <Link href={"./projects"} className="text-muted-foreground ">
+          <p>My Projects</p>
         </Link>
         <Link href={"./blog"} className="text-muted-foreground ">
-          <p>Blog</p>
+          <p>My Blog</p>
         </Link>
       </footer>
     </div>

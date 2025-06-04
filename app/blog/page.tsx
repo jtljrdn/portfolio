@@ -48,12 +48,15 @@ export default function Home() {
           ))}
         </div>
       </main>
-      <footer className="flex gap-6 flex-wrap items-center justify-center p-4 mt-auto mb-14">
-        <Link href={"/"} className="text-muted-foreground">
-          <p>Home</p>
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <Link href={"./"} className="text-muted-foreground">
+          <p>Me</p>
         </Link>
-        <Link href={"./projects"} className="text-muted-foreground">
-          <p>Projects</p>
+        <Link href={"./projects"} className="text-muted-foreground ">
+          <p>My Projects</p>
+        </Link>
+        <Link href={"./blog"} className="text-muted-foreground ">
+          <p>My Blog</p>
         </Link>
       </footer>
     </div>
