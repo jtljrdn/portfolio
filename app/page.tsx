@@ -51,7 +51,7 @@ export default function Home() {
 
                 <div className="flex flex-row justify-between">
                   <div>
-                    <p className="leading-4">Software Engineer Intern</p>
+                    <p className="leading-4">Information Technology Intern - F&D Pro App Development</p>
                     <p className="text-muted-foreground text-sm leading-4 mt-1">
                       Floor & Decor - Atlanta, GA
                     </p>
