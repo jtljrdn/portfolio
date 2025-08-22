@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPosts } from "@/lib/utils";
+import { getPosts } from "@/lib/mdx-utils";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 

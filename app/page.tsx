@@ -3,6 +3,7 @@ import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faFile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import ExperienceEntry from "@/components/ExperienceEntry";
 
 export default function Home() {
   return (
@@ -49,50 +50,178 @@ export default function Home() {
               <div>
                 <p className="font-bold mb-2">Experience</p>
 
-                <div className="flex flex-row justify-between">
-                  <div>
-                    <p className="leading-4">Information Technology Intern - F&D Pro App Development</p>
-                    <p className="text-muted-foreground text-sm leading-4 mt-1">
-                      Floor & Decor - Atlanta, GA
+                <ExperienceEntry
+                  title="Software Engineer Intern"
+                  company="Room2Room Movers"
+                  location="Auburn, AL"
+                  duration="Aug. 2025 - Present"
+                >
+                  <div className="space-y-3">
+                    <p>
+                      Working on the Room2Room Movers Mover App, a mobile app
+                      used by the movers to check their schedule and manage
+                      their jobs.
                     </p>
+                    <div>
+                      <h4 className="font-semibold mb-2">
+                        Key Responsibilities:
+                      </h4>
+                      <ul className="list-disc list-inside space-y-1 text-sm">
+                        <li>
+                          Developed and maintained mobile app features using
+                          React Native, improving user experience and
+                          functionality.
+                        </li>
+                        <li>
+                          Collaborated with cross-functional teams to implement
+                          new functionality, ensuring smooth integration and
+                          alignment with project goals.
+                        </li>
+                        <li>
+                          Debugged and optimized app performance, enhancing user
+                          experience and reducing load times.
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                      <p className="text-sm">
+                        React Native, Expo, Firebase, Tailwind CSS, OpenAI API
+                      </p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-muted-foreground text-sm">
-                      June 2025 - Aug. 2025
-                    </p>
-                  </div>
-                </div>
+                </ExperienceEntry>
 
-                <div className="flex flex-row justify-between my-4">
-                  <div>
-                    <p className="leading-4">
-                      Undergraduate Research Assistant - Full-Stack Web
-                      Development
+                <ExperienceEntry
+                  title="Information Technology Intern"
+                  company="Floor & Decor"
+                  location="Atlanta, GA"
+                  duration="June 2025 - Aug. 2025"
+                >
+                  <div className="space-y-3">
+                    <p>
+                      Working on the F&D Pro mobile application development
+                      team, focusing on creating efficient and user-friendly
+                      solutions for professional contractors and designers.
                     </p>
-                    <p className="text-muted-foreground text-sm leading-4 mt-1">
-                      Auburn University, Samuel Ginn College of Engineering
-                    </p>
+                    <div>
+                      <h4 className="font-semibold mb-2">
+                        Key Responsibilities:
+                      </h4>
+                      <ul className="list-disc list-inside space-y-1 text-sm">
+                        <li>
+                          Led a complete UI/UX redesign of the Premier Pro App,
+                          enhancing user experience and interface consistency
+                          across platforms.
+                        </li>
+                        <li>
+                          Developed and implemented front-end components using
+                          React Native, improving application responsiveness and
+                          maintainability.
+                        </li>
+                        <li>
+                          Collaborated with cross-functional teams including
+                          designers, product managers, and QA to align on user
+                          requirements and technical feasibility.
+                        </li>
+                        <li>
+                          Participate in code reviews and contribute to team
+                          best practices
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                      <p className="text-sm">
+                        React Native, Bitbucket, Figma, Jira, Confluence
+                      </p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-muted-foreground text-sm">
-                      Jan. 2025 - Present
-                    </p>
-                  </div>
-                </div>
+                </ExperienceEntry>
 
-                <div className="flex flex-row justify-between my-4">
-                  <div>
-                    <p className="leading-4">Web Development Intern</p>
-                    <p className="text-muted-foreground text-sm leading-4 mt-1">
-                      ChatDB.ai - Remote
+                <ExperienceEntry
+                  title="Undergraduate Research Assistant"
+                  company="Auburn University, Samuel Ginn College of Engineering"
+                  location="Auburn, AL"
+                  duration="Jan. 2025 - Present"
+                >
+                  <div className="space-y-3">
+                    <p>
+                      Full-Stack Web Development for Auburn University's ICAMS
+                      lab, creating a web application to help manage orders
+                      between manufacturers and customers.
                     </p>
+                    <div>
+                      <h4 className="font-semibold mb-2">
+                        Key Responsibilities:
+                      </h4>
+                      <ul className="list-disc list-inside space-y-1 text-sm">
+                        <li>
+                          Developed a web application to help manage orders
+                          between manufacturers and customers
+                        </li>
+                        <li>
+                          Implemented a RESTful API in Next.js to handle CRUD
+                          operations for the web application
+                        </li>
+                        <li>
+                          Integrated a Postgres database using Supabase to store
+                          and manage the application data.
+                        </li>
+                        <li>
+                          Developed a user-friendly interface using React and
+                          Next.js
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                      <p className="text-sm">
+                        React, Next.js, Node.js, Supabase, Tailwind CSS
+                      </p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-muted-foreground text-sm">
-                      Oct. 2023 - Mar. 2024
+                </ExperienceEntry>
+
+                <ExperienceEntry
+                  title="Web Development Intern"
+                  company="ChatDB.ai"
+                  location="Remote"
+                  duration="Oct. 2023 - Mar. 2024"
+                >
+                  <div className="space-y-3">
+                    <p>
+                      Contributed to the development of AI-powered database
+                      management tools and conversational interfaces for data
+                      querying and analysis.
                     </p>
+                    <div>
+                      <h4 className="font-semibold mb-2">Key Achievements:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-sm">
+                        <li>
+                          Built responsive web interfaces using modern frontend
+                          frameworks
+                        </li>
+                        <li>
+                          Implemented RESTful APIs and database integration
+                        </li>
+                        <li>
+                          Developed real-time chat functionality for database
+                          queries
+                        </li>
+                        <li>
+                          Optimized application performance and user experience
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Technologies Used:</h4>
+                      <p className="text-sm">
+                        JavaScript, React, Next.js, Supabase
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </ExperienceEntry>
               </div>
 
               <div>

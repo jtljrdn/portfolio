@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getPosts } from "@/lib/utils";
+import { getPosts } from "@/lib/mdx-utils";
 import styles from "./page.module.css";
 import Link from "next/link";
 import { CustomMDX } from "@/components/mdx";
@@ -50,7 +50,6 @@ export default async function Blog({
 }) {
   const { slug } = await params;
   const post = getPosts().find((post) => post.slug === slug);
-  
 
   if (!post) {
     notFound();
@@ -65,7 +64,7 @@ export default async function Blog({
       </header>
       <main className="max-w-3xl w-full">
         <div className="text-center leading-3 border-b-2 flex flex-col items-center justify-center">
-        {post.metadata.img && (
+          {post.metadata.img && (
             <Image
               src={post.metadata.img}
               alt={post.metadata.title}
@@ -78,12 +77,13 @@ export default async function Blog({
             {post.metadata.title}
           </h1>
           {post.metadata.date && (
-            <p className={`${styles.description} -mt-5 italic`}>Posted on {post.metadata.date}</p>
+            <p className={`${styles.description} -mt-5 italic`}>
+              Posted on {post.metadata.date}
+            </p>
           )}
           {post.metadata.description && (
             <p className={styles.description}>{post.metadata.description}</p>
           )}
-
         </div>
 
         <article>
