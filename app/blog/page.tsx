@@ -1,49 +1,45 @@
 import Link from "next/link";
 import { getPosts } from "@/lib/mdx-utils";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   const posts = getPosts();
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex flex-col items-center justify-center p-8 pb-20 gap-16 sm:p-20">
-        <div className="text-center">
-          <h1 className="h1 font-medium">Ramblings</h1>
-          <p className="text-muted-foreground text-center max-w-3xl">
+      <main className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20">
+        <div className="w-full max-w-2xl">
+          <h1 className="text-4xl font-bold tracking-tight font-serif">Ramblings</h1>
+          <p className="text-muted-foreground mt-3">
             A collection of my thoughts, ideas, and projects. I write about
             software development, technology, and anything else that comes to
             mind.
           </p>
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-2 w-full max-w-4xl gap-4">
+
+        <div className="w-full max-w-2xl divide-y divide-border">
           {posts.map((post) => (
-            <Link href={`/blog/${post.slug}`} key={post.slug} className="">
-              <Card key={post.slug} className="gap-0">
-                <CardHeader className="border-b-2 pb-4 text-center flex flex-col items-center justify-center">
-                  {post.metadata.img && (
-                    <Image
-                      src={post.metadata.img}
-                      alt={post.metadata.title}
-                      width={400}
-                      height={400}
-                    />
-                  )}{" "}
-                  <h4 className="font-bold lg:text-2xl text-xl">
-                    {post.metadata.title}
-                  </h4>
-                </CardHeader>
-                <CardContent className="flex flex-col items-center justify-center p-4">
-                  <p className="text-muted-foreground text-sm leading-4">
+            <Link
+              href={`/blog/${post.slug}`}
+              key={post.slug}
+              className="group block py-6 first:pt-0 last:pb-0"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5">
                     {post.metadata.date}
                   </p>
-
-                  <p className="text-muted-foreground text-sm leading-4 mt-1">
-                    {post.metadata.description}
-                  </p>
-                </CardContent>
-              </Card>
+                  <h2 className="text-lg font-semibold leading-snug font-serif group-hover:text-muted-foreground transition-colors duration-200">
+                    {post.metadata.title}
+                  </h2>
+                  {post.metadata.description && (
+                    <p className="text-muted-foreground text-sm mt-1.5 line-clamp-2">
+                      {post.metadata.description}
+                    </p>
+                  )}
+                </div>
+                <ArrowRight className="w-4 h-4 mt-6 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0" />
+              </div>
             </Link>
           ))}
         </div>

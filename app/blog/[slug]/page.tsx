@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 
-import { getPosts } from "@/lib/mdx-utils";
-import styles from "./page.module.css";
+import { getPosts, formatDateISO } from "@/lib/mdx-utils";
 import Link from "next/link";
 import { CustomMDX } from "@/components/mdx";
 import Image from "next/image";
-import { twJoin } from "tailwind-merge";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function generateStaticParams() {
   const posts = getPosts();
@@ -31,13 +31,30 @@ export async function generateMetadata({
     };
   }
 
+  const publishedTime = post.metadata.date
+    ? formatDateISO(post.metadata.date)
+    : undefined;
+
   return {
     title: post.metadata.title,
     description: post.metadata.description,
+    keywords: post.metadata.keywords,
+    authors: [{ name: "Jordan Lee" }],
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title: post.metadata.title,
       description: post.metadata.description,
-      url: `https://example.com/blog/${slug}`,
+      url: `https://jtlee.dev/blog/${slug}`,
+      type: "article",
+      publishedTime,
+      images: post.metadata.img ? [post.metadata.img] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.description,
       images: post.metadata.img ? [post.metadata.img] : [],
     },
   };
@@ -55,34 +72,66 @@ export default async function Blog({
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.metadata.title,
+    author: { "@type": "Person", name: "Jordan Lee" },
+    datePublished: post.metadata.date
+      ? formatDateISO(post.metadata.date)
+      : undefined,
+    keywords: post.metadata.keywords,
+    url: `https://jtlee.dev/blog/${slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header>
         <nav>
-          <Link href="/blog">👈</Link>
+          <Button variant="ghost" size="sm" asChild>
+            <Link
+              href="/blog"
+              className="gap-2 text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Link>
+          </Button>
         </nav>
       </header>
       <main className="max-w-3xl w-full">
-        <div className="text-center leading-3 border-b-2 flex flex-col items-center justify-center">
+        <div className="border-b pb-8 mb-8">
           {post.metadata.img && (
-            <Image
-              src={post.metadata.img}
-              alt={post.metadata.title}
-              width={600}
-              height={400}
-              quality={100}
-            />
+            <div className="mb-6 rounded-lg overflow-hidden">
+              <Image
+                src={post.metadata.img}
+                alt={post.metadata.title}
+                width={600}
+                height={400}
+                quality={100}
+                className="w-full object-cover"
+              />
+            </div>
           )}
-          <h1 className={twJoin("text-center !font-bold")}>
-            {post.metadata.title}
-          </h1>
+
           {post.metadata.date && (
-            <p className={`${styles.description} -mt-5 italic`}>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">
               Posted on {post.metadata.date}
             </p>
           )}
+
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight font-serif ">
+            {post.metadata.title}
+          </h1>
+
           {post.metadata.description && (
-            <p className={styles.description}>{post.metadata.description}</p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              {post.metadata.description}
+            </p>
           )}
         </div>
 

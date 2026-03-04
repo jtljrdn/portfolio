@@ -4,6 +4,7 @@ import path from "node:path";
 type Metadata = {
   title: string;
   description?: string;
+  keywords?: string;
   date?: string;
   img?: string;
 };
@@ -51,4 +52,8 @@ function getMDXData(dir: fs.PathLike) {
 
 export function getPosts() {
   return getMDXData(path.join(process.cwd(), "posts"));
+}
+
+export function formatDateISO(date: string): string {
+  return new Date(date).toISOString();
 }

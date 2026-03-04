@@ -1,4 +1,22 @@
+.prose :global(h1),
+.prose :global(h2),
+.prose :global(h3),
+.prose :global(h4),
+.prose :global(h5),
+.prose :global(h6) {
+  font-family: var(--font-playfair), serif;
+}
+
 .a {
-    color: tomato;
-    text-decoration-color: rgba(0, 0, 0, 0.4);
-  }
+  color: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: oklch(0.708 0 0);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.a:hover {
+  text-decoration-color: currentColor;
+}
