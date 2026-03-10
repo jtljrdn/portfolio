@@ -18,6 +18,12 @@ const page = () => {
             <CardContent className="flex flex-col items-center sm:items-start">
               <div className="w-full flex flex-col gap-4">
                 <ProjectsEntry
+                  title="Mythidex"
+                  description="A searchable database and REST API for Good Mythical Morning content."
+                  liveLink="https://mythidex.dev"
+                  ghLink="https://github.com/jtljrdn/good-mythical-archive"
+                />
+                <ProjectsEntry
                   title="Infinite Craft"
                   description="Created with Next.js, MongoDB, and Tailwind CSS. An online game where you can infinite combine items to create new ones. Inspired by neal.fun"
                   liveLink="infinite-craft-clone.vercel.app"
