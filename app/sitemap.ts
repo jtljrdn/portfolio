@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: "https://jtlee.dev" },
-    { url: "https://jtlee.dev/projects" },
     { url: "https://jtlee.dev/blog" },
     ...posts,
   ];

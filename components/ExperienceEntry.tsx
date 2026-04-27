@@ -29,29 +29,31 @@ export default function ExperienceEntry({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <div className="flex flex-row justify-between my-4 cursor-pointer hover:bg-gray-50 rounded transition-colors">
-          <div>
-            <p className="leading-4 font-medium">{title}</p>
-            <p className="text-muted-foreground text-sm leading-4 mt-1">
-              {company} - {location}
+        <button
+          type="button"
+          className="flex flex-row justify-between gap-4 py-3 -mx-2 px-2 rounded-md cursor-pointer text-left hover:bg-muted/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <div className="min-w-0">
+            <p className="font-medium">{title}</p>
+            <p className="text-muted-foreground text-sm mt-1">
+              {company} · {location}
             </p>
           </div>
-          <div className="text-right">
-            <p className="text-muted-foreground text-sm">{duration}</p>
-          </div>
-        </div>
+          <p className="text-muted-foreground text-sm whitespace-nowrap shrink-0">
+            {duration}
+          </p>
+        </button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">{title}</DialogTitle>
           <div className="text-muted-foreground">
             <p>
-              {company} - {location}
+              {company} · {location}
             </p>
             <p className="text-sm">{duration}</p>
           </div>
         </DialogHeader>
-
         <div className="mt-1">{children}</div>
       </DialogContent>
     </Dialog>
