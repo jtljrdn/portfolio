@@ -4,6 +4,7 @@ import "./globals.css";
 
 const nunito = Nunito_Sans({
   subsets: ["latin"],
+  variable: "--font-nunito",
 });
 
 const playfair = Playfair_Display({
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunito.className} ${playfair.variable} antialiased`}
+        className={`${nunito.className} ${nunito.variable} ${playfair.variable} antialiased`}
       >
         {children}
       </body>

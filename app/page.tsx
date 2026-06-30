@@ -1,305 +1,294 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Link from "next/link";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import { faFile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import ExperienceEntry from "@/components/ExperienceEntry";
-import ProjectsEntry from "@/components/ProjectsEntry";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import Reveal from "@/components/reveal";
+import {
+  education,
+  experiences,
+  projects,
+  type Experience,
+  type Project,
+  type WorkImage,
+} from "@/lib/content";
 
-const cardClass =
-  "w-full sm:w-[550px] border border-border rounded-lg shadow-sm";
+config.autoAddCss = false;
+
+interface CompanyGroup {
+  company: string;
+  location: string;
+  roles: Experience[];
+}
+
+function groupByCompany(items: Experience[]): CompanyGroup[] {
+  const groups: CompanyGroup[] = [];
+  for (const exp of items) {
+    const last = groups[groups.length - 1];
+    if (last && last.company === exp.company) last.roles.push(exp);
+    else groups.push({ company: exp.company, location: exp.location, roles: [exp] });
+  }
+  return groups;
+}
+
+const experienceGroups = groupByCompany(experiences);
+
+const socials = [
+  {
+    href: "https://www.linkedin.com/in/jordan-lee-2bb996296/",
+    label: "LinkedIn",
+    icon: faLinkedinIn,
+  },
+  { href: "https://www.github.com/jtljrdn", label: "GitHub", icon: faGithub },
+  { href: "/Lee-Jordan-Resume.pdf", label: "Resume", icon: faFile },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center px-6 py-16 sm:py-20">
-      <main className="flex flex-col items-stretch gap-6 w-full sm:w-[550px]">
-        <header className="flex flex-col gap-2 px-1">
-          <div className="flex flex-row items-baseline gap-3 flex-wrap">
-            <h1 className="font-serif text-4xl sm:text-5xl tracking-tight">
-              Jordan Lee
-            </h1>
-            <div className="flex flex-row items-center gap-3 text-muted-foreground">
-              <Link
-                href="https://www.linkedin.com/in/jordan-lee-2bb996296/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="LinkedIn"
-                aria-label="LinkedIn"
-                className="hover:text-foreground transition-colors"
-              >
-                <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
-              </Link>
-              <Link
-                href="https://www.github.com/jtljrdn"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="GitHub"
-                aria-label="GitHub"
-                className="hover:text-foreground transition-colors"
-              >
-                <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/Lee-Jordan-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Resume"
-                aria-label="Resume"
-                className="hover:text-foreground transition-colors"
-              >
-                <FontAwesomeIcon icon={faFile} className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-          <p className="text-muted-foreground">
-            Software Engineer · Full Stack Developer
-          </p>
-        </header>
+    <div className="min-h-screen">
+      <Hero />
 
-        <Card className={cardClass}>
-          <CardHeader className="border-b pb-4">
-            <p className="font-semibold text-lg">Experience</p>
-          </CardHeader>
-          <CardContent className="flex flex-col">
-            <ExperienceEntry
-              title="Software Engineer Intern"
-              company="Room2Room Movers"
-              location="Auburn, AL"
-              duration="Aug. 2025 — Present"
-            >
-              <div className="space-y-3">
-                <p>
-                  Working on the Room2Room Movers Mover App, a mobile app used
-                  by the movers to check their schedule and manage their jobs.
-                </p>
+      <main className="mx-auto max-w-2xl px-6 pb-28">
+        <Section title="Experience">
+          {experienceGroups.map((group) => (
+            <CompanyBlock key={group.company} group={group} />
+          ))}
+        </Section>
+
+        <Section title="Projects">
+          {projects.map((project) => (
+            <ProjectBlock key={project.name} project={project} />
+          ))}
+        </Section>
+
+        <Section title="Education">
+          {education.map((ed) => (
+            <Reveal key={ed.degree} className="py-7 first:pt-0">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <div>
-                  <h4 className="font-semibold mb-2">Key Responsibilities:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li>
-                      Developed and maintained mobile app features using React
-                      Native, improving user experience and functionality.
-                    </li>
-                    <li>
-                      Collaborated with cross-functional teams to implement new
-                      functionality, ensuring smooth integration and alignment
-                      with project goals.
-                    </li>
-                    <li>
-                      Debugged and optimized app performance, enhancing user
-                      experience and reducing load times.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Technologies Used:</h4>
-                  <p className="text-sm">
-                    React Native, Expo, Firebase, Tailwind CSS, OpenAI API
+                  <h3 className="text-lg font-medium">{ed.degree}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {ed.school}
+                    {ed.location ? ` · ${ed.location}` : ""}
                   </p>
                 </div>
-              </div>
-            </ExperienceEntry>
-
-            <ExperienceEntry
-              title="Information Technology Intern"
-              company="Floor & Decor"
-              location="Atlanta, GA"
-              duration="June 2025 — Aug. 2025"
-            >
-              <div className="space-y-3">
-                <p>
-                  Working on the F&D Pro mobile application development team,
-                  focusing on creating efficient and user-friendly solutions
-                  for professional contractors and designers.
+                <p className="text-sm whitespace-nowrap text-muted-foreground">
+                  {ed.start} — {ed.end}
                 </p>
-                <div>
-                  <h4 className="font-semibold mb-2">Key Responsibilities:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li>
-                      Led a complete UI/UX redesign of the Premier Pro App,
-                      enhancing user experience and interface consistency
-                      across platforms.
-                    </li>
-                    <li>
-                      Developed and implemented front-end components using
-                      React Native, improving application responsiveness and
-                      maintainability.
-                    </li>
-                    <li>
-                      Collaborated with cross-functional teams including
-                      designers, product managers, and QA to align on user
-                      requirements and technical feasibility.
-                    </li>
-                    <li>
-                      Participate in code reviews and contribute to team best
-                      practices.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Technologies Used:</h4>
-                  <p className="text-sm">
-                    React Native, Bitbucket, Figma, Jira, Confluence
-                  </p>
-                </div>
               </div>
-            </ExperienceEntry>
+            </Reveal>
+          ))}
+        </Section>
+      </main>
 
-            <ExperienceEntry
-              title="Undergraduate Research Assistant"
-              company="Auburn University, Samuel Ginn College of Engineering"
-              location="Auburn, AL"
-              duration="Jan. 2025 — Present"
+      <footer className="mx-auto flex max-w-2xl items-center justify-center gap-8 px-6 pb-16 text-sm text-muted-foreground">
+        <Link href="/" className="transition-colors hover:text-foreground">
+          Me
+        </Link>
+        <Link href="/blog" className="transition-colors hover:text-foreground">
+          Blog
+        </Link>
+      </footer>
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <div>
+        <h1 className="font-serif text-6xl tracking-tight sm:text-7xl">
+          Jordan Lee
+        </h1>
+        <p className="mt-4 text-muted-foreground">
+          Software Engineer · Full Stack Developer
+        </p>
+        <div className="mt-7 flex items-center justify-center gap-6 text-muted-foreground">
+          {socials.map((s) => (
+            <Link
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={s.label}
+              aria-label={s.label}
+              className="transition-colors hover:text-foreground"
             >
-              <div className="space-y-3">
-                <p>
-                  Full-Stack Web Development for Auburn University&apos;s ICAMS
-                  lab, creating a web application to help manage orders between
-                  manufacturers and customers.
-                </p>
-                <div>
-                  <h4 className="font-semibold mb-2">Key Responsibilities:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li>
-                      Developed a web application to help manage orders between
-                      manufacturers and customers.
-                    </li>
-                    <li>
-                      Implemented a RESTful API in Next.js to handle CRUD
-                      operations for the web application.
-                    </li>
-                    <li>
-                      Integrated a Postgres database using Supabase to store
-                      and manage the application data.
-                    </li>
-                    <li>
-                      Developed a user-friendly interface using React and
-                      Next.js.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Technologies Used:</h4>
-                  <p className="text-sm">
-                    React, Next.js, Node.js, Supabase, Tailwind CSS
-                  </p>
-                </div>
-              </div>
-            </ExperienceEntry>
+              <FontAwesomeIcon icon={s.icon} className="h-5 w-5" />
+            </Link>
+          ))}
+        </div>
+      </div>
 
-            <ExperienceEntry
-              title="Web Development Intern"
-              company="ChatDB.ai"
-              location="Remote"
-              duration="Oct. 2023 — Mar. 2024"
-            >
-              <div className="space-y-3">
-                <p>
-                  Contributed to the development of AI-powered database
-                  management tools and conversational interfaces for data
-                  querying and analysis.
-                </p>
-                <div>
-                  <h4 className="font-semibold mb-2">Key Achievements:</h4>
-                  <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li>
-                      Built responsive web interfaces using modern frontend
-                      frameworks.
-                    </li>
-                    <li>
-                      Implemented RESTful APIs and database integration.
-                    </li>
-                    <li>
-                      Developed real-time chat functionality for database
-                      queries.
-                    </li>
-                    <li>
-                      Optimized application performance and user experience.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-2">Technologies Used:</h4>
-                  <p className="text-sm">
-                    JavaScript, React, Next.js, Supabase
-                  </p>
-                </div>
-              </div>
-            </ExperienceEntry>
-          </CardContent>
-        </Card>
+      <ChevronDown
+        aria-hidden
+        className="animate-nudge absolute bottom-10 h-5 w-5 text-muted-foreground/50"
+      />
+    </section>
+  );
+}
 
-        <Card className={cardClass}>
-          <CardHeader className="border-b pb-4">
-            <p className="font-semibold text-lg">Projects</p>
-            <p className="text-muted-foreground text-sm">
-              A list of my projects, some work and some don&apos;t. All code is
-              available on GitHub.
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mt-20 first:mt-0">
+      <Reveal>
+        <h2 className="border-b border-border pb-3 text-sm font-medium text-muted-foreground">
+          {title}
+        </h2>
+      </Reveal>
+      <div className="mt-2 divide-y divide-border/70">{children}</div>
+    </section>
+  );
+}
+
+function TechLine({ tech }: { tech: string[] }) {
+  return (
+    <p className="mt-4 text-sm text-muted-foreground">{tech.join(" · ")}</p>
+  );
+}
+
+function Gallery({ images }: { images: WorkImage[] }) {
+  return (
+    <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {images.map((img) => (
+        <div
+          key={img.src}
+          className="relative aspect-[4/3] overflow-hidden rounded-md border border-border"
+        >
+          <Image
+            src={img.src}
+            alt={img.alt}
+            fill
+            sizes="(max-width: 640px) 50vw, 200px"
+            className="object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ExternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function RoleBody({ exp }: { exp: Experience }) {
+  return (
+    <>
+      <p className="mt-4 leading-relaxed">{exp.summary}</p>
+      <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground marker:text-border">
+        {exp.highlights.map((h) => (
+          <li key={h}>{h}</li>
+        ))}
+      </ul>
+      <TechLine tech={exp.tech} />
+      {exp.images?.length ? <Gallery images={exp.images} /> : null}
+    </>
+  );
+}
+
+function CompanyBlock({ group }: { group: CompanyGroup }) {
+  if (group.roles.length === 1) {
+    const exp = group.roles[0];
+    return (
+      <Reveal className="py-7 first:pt-0">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <div>
+            <h3 className="text-lg font-medium">{exp.role}</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {exp.company} · {exp.location}
             </p>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-5">
-          <ProjectsEntry
-              title="Handoff"
-              description="Web- and CLI-based tool for managing environment variables in development and production environments."
-              liveLink="https://gethandoff.dev"
-              ghLink="https://github.com/jtljrdn/handoff-env"
-            />
-            <ProjectsEntry
-              title="Mythidex"
-              description="A searchable database and REST API for Good Mythical Morning content."
-              liveLink="https://mythidex.dev"
-              ghLink="https://github.com/jtljrdn/good-mythical-archive"
-            />
-            <ProjectsEntry
-              title="Infinite Craft"
-              description="An online game where you can infinitely combine items to create new ones. Inspired by neal.fun. Built with Next.js, MongoDB, and Tailwind CSS."
-              liveLink="https://infinite-craft-clone.vercel.app"
-              ghLink="https://github.com/jtljrdn/infinite-craft-clone"
-            />
-            <ProjectsEntry
-              title="Cambot Discord Bot"
-              description="A multipurpose Discord bot built with Node.js, Discord.js, and MongoDB. Includes moderation, music, and fun commands."
-              ghLink="https://github.com/jtljrdn/Cam-Counter-Public"
-            />
-            <ProjectsEntry
-              title="Cambot Website"
-              description="A companion website for the Cambot Discord bot. Built with Next.js, Tailwind CSS, and MongoDB."
-              ghLink="https://github.com/jtljrdn/cambot-website"
-              liveLink="https://cambot.xyz"
-            />
-          </CardContent>
-        </Card>
+          </div>
+          <p className="text-sm whitespace-nowrap text-muted-foreground">
+            {exp.start} — {exp.end}
+          </p>
+        </div>
+        <RoleBody exp={exp} />
+      </Reveal>
+    );
+  }
 
-        <Card className={cardClass}>
-          <CardHeader className="border-b pb-4">
-            <p className="font-semibold text-lg">Education</p>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-row justify-between gap-4">
-              <div>
-                <p className="font-medium">Bachelor of Software Engineering</p>
-                <p className="text-muted-foreground text-sm mt-1">
-                  Auburn University
-                </p>
-              </div>
-              <p className="text-muted-foreground text-sm whitespace-nowrap">
-                Aug. 2023 — May 2027
+  const latest = group.roles[0];
+  const earliest = group.roles[group.roles.length - 1];
+
+  return (
+    <Reveal className="py-7 first:pt-0">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h3 className="text-lg font-medium">{group.company}</h3>
+        <p className="text-sm whitespace-nowrap text-muted-foreground">
+          {earliest.start} — {latest.end}
+        </p>
+      </div>
+      <p className="mt-1 text-sm text-muted-foreground">{group.location}</p>
+
+      <div className="relative mt-6 space-y-7 pl-6">
+        <span
+          aria-hidden
+          className="absolute bottom-2 left-[3px] top-2 w-px bg-border"
+        />
+        {group.roles.map((role) => (
+          <div key={role.role + role.start} className="relative">
+            <span
+              aria-hidden
+              className="absolute -left-6 top-[7px] h-[7px] w-[7px] rounded-full border border-border bg-background"
+            />
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h4 className="font-medium">{role.role}</h4>
+              <p className="text-sm whitespace-nowrap text-muted-foreground">
+                {role.start} — {role.end}
               </p>
             </div>
-          </CardContent>
-        </Card>
+            <RoleBody exp={role} />
+          </div>
+        ))}
+      </div>
+    </Reveal>
+  );
+}
 
-        <footer className="flex gap-6 items-center justify-center text-sm text-muted-foreground mt-6">
-          <Link href="/" className="hover:text-foreground transition-colors">
-            Me
-          </Link>
-          <Link
-            href="/blog"
-            className="hover:text-foreground transition-colors"
-          >
-            Blog
-          </Link>
-        </footer>
-      </main>
-    </div>
+function ProjectBlock({ project }: { project: Project }) {
+  return (
+    <Reveal className="py-7 first:pt-0">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h3 className="text-lg font-medium">{project.name}</h3>
+        <div className="flex items-center gap-4">
+          {project.live && <ExternalLink href={project.live}>Visit</ExternalLink>}
+          {project.github && (
+            <ExternalLink href={project.github}>Code</ExternalLink>
+          )}
+        </div>
+      </div>
+
+      <p className="mt-2 leading-relaxed text-muted-foreground">
+        {project.description}
+      </p>
+
+      {project.tech?.length ? <TechLine tech={project.tech} /> : null}
+      {project.images?.length ? <Gallery images={project.images} /> : null}
+    </Reveal>
   );
 }
