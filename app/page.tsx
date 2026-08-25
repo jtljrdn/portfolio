@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Reveal from "@/components/reveal";
+import Contributions from "@/components/contributions";
 import {
   education,
   experiences,
@@ -64,6 +65,14 @@ export default function Home() {
           ))}
         </Section>
 
+        {/* TODO: add `games` to lib/content.ts and a GameBlock component
+        <Section title="Games">
+          {games.map((game) => (
+            <GameBlock key={game.name} game={game} />
+          ))}
+        </Section>
+        */}
+
         <Section title="Education">
           {education.map((ed) => (
             <Reveal key={ed.degree} className="py-7 first:pt-0">
@@ -99,7 +108,7 @@ export default function Home() {
 function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <div>
+      <div className="w-full max-w-3xl">
         <h1 className="font-serif text-6xl tracking-tight sm:text-7xl">
           Jordan Lee
         </h1>
@@ -121,6 +130,8 @@ function Hero() {
             </Link>
           ))}
         </div>
+
+        <Contributions />
       </div>
 
       <ChevronDown

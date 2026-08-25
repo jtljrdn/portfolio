@@ -25,6 +25,15 @@ export interface Project {
   images?: WorkImage[];
 }
 
+export interface Game {
+  name: string;
+  description: string;
+  tech?: string[];
+  live?: string;
+  github?: string;
+  images?: WorkImage[];
+}
+
 export interface Education {
   degree: string;
   school: string;
