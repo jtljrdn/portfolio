@@ -25,8 +25,7 @@ function attr(tag: string, name: string): string | undefined {
   return new RegExp(`${name}="([^"]*)"`).exec(tag)?.[1];
 }
 
-// ponytail: scrapes GitHub's public contributions fragment. No token needed.
-// Swap for the GraphQL API if GitHub changes this markup.
+
 async function getContributions(): Promise<{ days: Day[]; total: string } | null> {
   try {
     const res = await fetch(`https://github.com/users/${USER}/contributions`, {
@@ -88,7 +87,7 @@ export default async function Contributions() {
   // Drop a leading partial month like GitHub does.
   if (labels.length > 1 && labels[1].col < 3) labels.shift();
 
-  const cols = { gridTemplateColumns: `repeat(${weeks}, 9px)` };
+  const cols = { gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))` };
 
   return (
     <a
@@ -96,28 +95,32 @@ export default async function Contributions() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${total} GitHub contributions in the last year`}
-      className="group mt-12 block max-w-full overflow-x-auto"
+      className="group mt-10 block sm:mt-12"
     >
-      <div className="mx-auto w-max">
+      <div className="mx-auto w-full max-w-[583px]">
         <div
-          className="grid gap-[2px] text-[9px] text-muted-foreground"
+          className="grid gap-px text-[9px] text-muted-foreground sm:gap-[2px]"
           style={cols}
           aria-hidden
         >
-          {labels.map((m) => (
-            <span key={m.col} className="pb-1 text-left" style={{ gridColumnStart: m.col + 1 }}>
+          {labels.map((m, i) => (
+            <span
+              key={m.col}
+              style={{ gridColumnStart: m.col + 1 }}
+              className={`pb-1 text-left ${i % 2 ? "hidden sm:block" : ""}`}
+            >
               {m.name}
             </span>
           ))}
         </div>
 
-        <div className="grid gap-[2px]" style={cols} aria-hidden>
+        <div className="grid gap-px sm:gap-[2px]" style={cols} aria-hidden>
           {days.map((d) => (
             <span
               key={d.date}
               title={d.label}
               style={{ gridRowStart: d.row + 1, gridColumnStart: d.col + 1 }}
-              className={`h-[9px] w-[9px] rounded-[2px] ${LEVEL_CLASS[d.level] ?? LEVEL_CLASS[0]}`}
+              className={`aspect-square rounded-[2px] sm:rounded-[3px] ${LEVEL_CLASS[d.level] ?? LEVEL_CLASS[0]}`}
             />
           ))}
         </div>
