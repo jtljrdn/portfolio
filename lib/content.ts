@@ -124,6 +124,13 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
+    name: "GoodRepo",
+    description:
+      "Scores how easy any public GitHub repo is for AI agents to work in using a combination of deterministic static analysis and LLM analysis.",
+    live: "https://goodrepo.dev",
+    github: "https://github.com/jtljrdn/goodrepo",
+  },
+  {
     name: "Handoff",
     description:
       "Web- and CLI-based tool for managing environment variables across development and production.",
