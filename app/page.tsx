@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedinIn, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faFile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -44,6 +44,7 @@ const socials = [
     icon: faLinkedinIn,
   },
   { href: "https://www.github.com/jtljrdn", label: "GitHub", icon: faGithub },
+  { href: "https://x.com/jtljrdn", label: "X", icon: faXTwitter },
   { href: "/Lee-Jordan-Resume.pdf", label: "Resume", icon: faFile },
 ];
 
