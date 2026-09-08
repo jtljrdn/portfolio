@@ -7,6 +7,107 @@
   font-family: var(--font-playfair), serif;
 }
 
+.prose {
+  color: var(--foreground);
+}
+
+.prose > :global(p),
+.prose > :global(h1),
+.prose > :global(h2),
+.prose > :global(h3),
+.prose > :global(h4),
+.prose > :global(h5),
+.prose > :global(h6),
+.prose > :global(pre),
+.prose > :global(blockquote),
+.prose > :global(ul),
+.prose > :global(ol) {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.prose :global(p) {
+  margin-block: 1.15rem;
+  font-size: 1.02rem;
+  line-height: 1.82;
+  text-wrap: pretty;
+}
+
+.prose :global(h2) {
+  margin-top: 3.75rem;
+  margin-bottom: 1.1rem;
+  font-size: clamp(1.7rem, 4vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.prose :global(h3) {
+  margin-top: 2.6rem;
+  margin-bottom: 0.85rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.prose :global(pre) {
+  overflow-x: auto;
+  margin-block: 1.8rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid oklch(0.83 0.012 75);
+  border-radius: 0.65rem;
+  color: oklch(0.91 0.01 180);
+  background: oklch(0.19 0.012 205);
+  box-shadow: 0 1rem 2.5rem oklch(0.3 0.02 70 / 0.1);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.prose :global(code) {
+  font-variant-ligatures: none;
+}
+
+.prose :global(p code) {
+  padding: 0.12rem 0.3rem;
+  border-radius: 0.25rem;
+  background: var(--muted);
+  font-size: 0.88em;
+}
+
+.prose :global(blockquote) {
+  margin-block: 1.75rem;
+  padding: 0.2rem 0 0.2rem 1.25rem;
+  border-left: 2px solid oklch(0.54 0.08 62);
+  color: var(--muted-foreground);
+}
+
+.prose :global(blockquote p) {
+  margin-block: 0;
+}
+
+.prose :global(ul),
+.prose :global(ol) {
+  margin-block: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+.prose :global(li) {
+  margin-block: 0.45rem;
+  line-height: 1.7;
+}
+
+.prose :global(strong) {
+  font-weight: 700;
+}
+
+.prose :global(hr) {
+  max-width: 48rem;
+  margin: 3rem auto;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
 .a {
   color: inherit;
   font-weight: 500;
@@ -19,4 +120,10 @@
 
 .a:hover {
   text-decoration-color: currentColor;
+}
+
+.a:focus-visible {
+  border-radius: 0.15rem;
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
 }

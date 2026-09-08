@@ -1,0 +1,380 @@
+.report,
+.videoFigure {
+  width: 100%;
+  margin-block: 2.75rem;
+}
+
+.report {
+  --sonnet: oklch(0.68 0.018 70);
+  --opus: oklch(0.54 0.08 62);
+  --terra: oklch(0.48 0.07 174);
+  --sol: oklch(0.38 0.08 228);
+}
+
+.videoFrame {
+  overflow: hidden;
+  padding: 0.25rem;
+  border-radius: 0.4rem;
+  background: oklch(0.19 0.012 205);
+}
+
+.videoFrame video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1302 / 532;
+  border-radius: 0.2rem;
+  background: oklch(0.19 0.012 205);
+}
+
+.videoFigure figcaption,
+.chartCard figcaption,
+.tableFigure figcaption {
+  margin-top: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.methodLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem 1.5rem;
+  padding: 0.85rem 0;
+  border-block: 1px solid var(--border);
+  color: var(--muted-foreground);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.methodLine strong {
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.methodLine span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1.5rem;
+  color: var(--border);
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 0.75fr);
+  gap: 3rem;
+  padding-block: 2.75rem 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.chartCard {
+  min-width: 0;
+  margin: 0;
+}
+
+.chartCard + .chartCard {
+  padding-left: 3rem;
+  border-left: 1px solid var(--border);
+}
+
+.figureHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.figureHeader h3 {
+  margin: 0;
+  font-family: var(--font-playfair), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.legend,
+.unit {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.legend i,
+.scoreTrack i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+}
+
+.runOne {
+  background: var(--foreground);
+}
+
+.runTwo {
+  border: 1.5px solid var(--foreground);
+  background: var(--background);
+}
+
+.scoreScale {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2.55rem 0.4rem 8.45rem;
+  color: var(--muted-foreground);
+  font-size: 0.62rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreRows,
+.costRows {
+  display: grid;
+  gap: 0.68rem;
+}
+
+.scoreRow,
+.costRow {
+  display: grid;
+  grid-template-columns: 7.8rem minmax(5rem, 1fr) 2.1rem;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.rowLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+  font-size: 0.72rem;
+}
+
+.rowLabel span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rowLabel small {
+  color: var(--muted-foreground);
+  font-size: 0.62rem;
+}
+
+.scoreRow > strong,
+.costRow > strong {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreTrack {
+  position: relative;
+  height: 0.6rem;
+}
+
+.scoreTrack progress,
+.costRow progress {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0.08rem;
+  background: oklch(0.915 0.006 78);
+  appearance: none;
+}
+
+.scoreTrack progress::-webkit-progress-bar,
+.costRow progress::-webkit-progress-bar {
+  border-radius: 0.08rem;
+  background: oklch(0.915 0.006 78);
+}
+
+.scoreTrack progress::-webkit-progress-value,
+.costRow progress::-webkit-progress-value {
+  border-radius: 0.08rem;
+  background: var(--series);
+}
+
+.scoreTrack progress::-moz-progress-bar,
+.costRow progress::-moz-progress-bar {
+  border-radius: 0.08rem;
+  background: var(--series);
+}
+
+.scoreTrack i {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.costRow {
+  grid-template-columns: 7.8rem minmax(4rem, 1fr) 3.2rem;
+}
+
+.costRow progress {
+  height: 0.55rem;
+}
+
+.sonnet {
+  --series: var(--sonnet);
+}
+
+.opus {
+  --series: var(--opus);
+}
+
+.terra {
+  --series: var(--terra);
+}
+
+.sol {
+  --series: var(--sol);
+}
+
+.tableFigure {
+  margin: 0;
+  padding-top: 3rem;
+}
+
+.tableScroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.tableFigure table {
+  width: 100%;
+  min-width: 56rem;
+  border-collapse: collapse;
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tableFigure th,
+.tableFigure td {
+  padding: 0.72rem 0.55rem;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tableFigure thead th {
+  border-bottom-color: oklch(0.72 0.01 75);
+  color: var(--muted-foreground);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tableFigure th:first-child,
+.tableFigure td:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.tableFigure tbody th {
+  font-weight: 600;
+}
+
+.tableFigure tbody tr:last-child th,
+.tableFigure tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.tableFigure tbody tr:nth-child(4) > *,
+.tableFigure tbody tr:nth-child(8) > *,
+.tableFigure tbody tr:nth-child(11) > * {
+  border-top: 1px solid oklch(0.72 0.01 75);
+}
+
+.modelMark {
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--series);
+}
+
+.pass,
+.partial {
+  font-weight: 600;
+}
+
+.pass {
+  color: oklch(0.36 0.075 164);
+}
+
+.partial {
+  color: oklch(0.47 0.08 54);
+}
+
+.pass::before,
+.partial::before {
+  display: inline-block;
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.35rem;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+}
+
+@media (max-width: 780px) {
+  .charts {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .chartCard + .chartCard {
+    padding-top: 2.5rem;
+    padding-left: 0;
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .methodLine {
+    gap: 0.45rem 1rem;
+  }
+
+  .methodLine span:not(:last-child)::after {
+    margin-left: 1rem;
+  }
+
+  .figureHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .scoreRow,
+  .costRow {
+    grid-template-columns: 6.1rem minmax(4rem, 1fr) 2.9rem;
+    gap: 0.45rem;
+  }
+
+  .rowLabel {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .scoreScale {
+    margin-left: 6.55rem;
+    margin-right: 3.35rem;
+  }
+}

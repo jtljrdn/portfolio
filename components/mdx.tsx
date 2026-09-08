@@ -5,6 +5,7 @@ import rehypeSlug from "rehype-slug";
 import styles from "./mdx.module.css";
 import { Greet } from "./greet";
 import { HeadingLink } from "./heading-link";
+import { BenchmarkResults, BenchmarkVideo } from "./blog/[slug]/benchmark-report";
 
 function CustomLink({
   href,
@@ -63,6 +64,8 @@ export function CustomMDX(props: MDXRemoteProps) {
     h5: createHeading("h5"),
     h6: createHeading("h6"),
     Greet: Greet,
+    BenchmarkResults,
+    BenchmarkVideo,
   };
 
   return (

@@ -1,0 +1,71 @@
+---
+title: Benchmarking Claude Code vs. Codex, September 2026
+description: I ran 26 agent benchmarks to compare Claude Sonnet 5, Claude Opus 5, GPT-5.6 Terra, and GPT-5.6 Sol on quality, cost, speed, and code churn.
+keywords: Claude Code, Codex, GPT-5.6, Claude Opus 5, Claude Sonnet 5, coding agents, benchmark, agent-bench
+date: 9/7/2026
+layout: report
+---
+
+Recently, with the release and hype around GPT-6 Astra, I was finally tipped over the edge to trying out Codex and the various GPT models. When 5.6-[Luna/Terra/Sol] released, I was tempted, but I held off. Astra seemed like a big enough deal, and I was getting tired of Anthropic's antics around usage limits. I also just felt that the Codex/ChatGPT desktop app was superior to the Claude desktop app.
+
+Regardless, upon switching, I quickly had choice paralysis over which model to use. Unfortunately, I don't have an infinite token spend, so I had to be methodical about my usage. With the Claude models, I basically just ran whatever flavor of Opus was newest at medium or high. Even with *just* Max 5x, I would get an entire week's worth of work done with the weekly usage and never reached the 5h or weekly limits.
+
+For Codex Pro 5x, I did a couple of tickets using Astra and Sol at med/high and quickly found my weekly (no 5h limit) was being used rather quickly. Maybe I was just pocket-watching, not sure. But I couldn't find any definitive evidence for which 5x plan gave you more weekly usage, so I planned to benchmark it.
+
+## The bench
+
+I quickly built a [Claude Code- and Codex CLI-compatible benchmarking harness](https://github.com/jtljrdn/agent-bench) for my research. *Feel free to fork it for your own experiments.* This test bench is super rudimentary and is by no means a bleeding-edge research tool, but it was good enough to help me answer my questions. I built the bench to support different tasks that could be run, each with a unique prompt and seed.
+
+## The experiment
+
+I wanted to test all of the models that I was considering using. I ended up settling on Sonnet 5 low-high (more just to see how it compared to the other models; I wasn't expecting to use it), Opus 5 low-max, GPT-5.6-Terra low-high, and GPT-5.6-Sol low-high.
+
+**I omitted models like Fable 5.1 and Astra 6 for this since I wasn't very interested, and both of those models will drain my usage.** Neither would be my daily driver anyway, so I felt comfortable not testing them. If you work at OpenAI or Anthropic or otherwise have a way to support my token usage for benchmarking, [hit me up](https://x.com/jtljrdn)!
+
+I ran these models through a couple of tasks, trying to find one that a model ended up struggling with. The task I ended up giving it was something I thought was fairly representative of a common, everyday task you might give to your agent: a bug fix in a production piece of software with a nebulous root cause and unknown implementation.
+
+I prioritized simple prompts instead of long, thought-out prompts. In my testing, long and detailed prompts, to no one's surprise, finished the benchmark with a 100% success rate, even on the worst models tested. I feel most engineers probably aren't giving super long and detailed prompts to their agents, so I wanted to test that scenario mainly. The prompt I gave it was as follows:
+
+```
+Inventory reservations occasionally oversell under load, retries sometimes consume stock twice, and expired holds are not always released. Diagnose and fix the service without changing its public API. Add regression tests and run the checks.
+```
+
+<BenchmarkVideo />
+
+## The results
+
+I want to preface this section by saying these results are not very scientific and should be taken with a grain of salt. I did not have the time or usage available to run each model through the benchmark 5-10 times like I would have wanted, so we're going to settle with an `n = 2` for this. Statistics nerds beware.
+
+This is the data I captured from the runs.
+
+<BenchmarkResults />
+
+### Reliability
+
+My first surprise was to see how Sonnet really struggled with this task (again, with longer, more detailed prompts, it was 100% successful), especially compared to Terra, which had a much better score. Sonnet failed all six runs, while Terra passed five of six. It's also pretty neat to be able to see how the token usage is divvied up and how each model uses different portions in different manners. The same can be said for seeing the per-agent cost ($).
+
+### Code churn
+
+Another thing I noticed was that the number of lines required for a successful fix had a large range, from 162 (Terra Medium) to 444 (Opus Max). Averaged across the two runs, those configurations added 170.5 and 442.5 lines, respectively. This high variance, especially from the larger models, is a sign of overengineering a solution, given that Terra and even Sol low/med were able to solve the issue with far fewer lines added. In general, Opus wrote more code than the GPT-5.6 models at comparable effort levels. At high effort, Sol came close—380.5 lines on average versus Opus's 386—while Terra only averaged 235. What's crazier is I even had the [Ponytail](https://ponytail.dev/) skill enabled for the Claude run. *Sidebar: I'm a little skeptical of the claims they make, but I enabled it some weeks ago and haven't thought about it much since. JetBrains put out a great [post](https://blog.jetbrains.com/ai/2026/07/ponytail-skill-claude-tested/) about it.*
+
+### Cost
+
+Finally, I came to my conclusion on which model I should daily-drive based on pricing and performance. Looking at the data, Sol on low cost roughly 30% of Opus on low, Sol on medium cost roughly 36% of Opus on medium, and Sol on high cost roughly 49% of Opus on high.
+
+### Subscription usage
+
+What's left to be seen is the actual effect on my weekly usage. These benchmarks used very little of my weekly usage, so it is hard to say which subscription will give the best usage. Across all 12 Codex runs, the weekly meter moved by one percentage point. Across all 14 Claude runs, its weekly meter also moved by one point. The meters are too coarse—and this test too limited—to draw a meaningful comparison from that.
+
+There is another caveat with the token data: Claude and Codex report their token categories differently. I think the columns are useful for seeing how each model behaves within its own agent, but I wouldn't treat them as a perfectly apples-to-apples comparison between the two.
+
+## The conclusion
+
+I think from the beginning Sol was the obvious choice. It's smart, relatively cheap, pretty quick, and much more pleasant to work with compared to Opus 5. For everyday work, Sol low or medium feels like the best balance for me.
+
+That said, Terra Medium was probably the biggest value surprise. It scored 100 on both runs and averaged just under $0.15 per run—the cheapest configuration to pass twice. If I were optimizing for value alone, that is where I would start. If I had to pick one model as my daily driver, though, I would still pick Sol.
+
+## What's next?
+
+I would love to do a more in-depth look into how combining models/reasoning levels could improve the performance of agents. I'm very much in the camp of "I just want to use this tool and not spend hours configuring it." So when I read a post saying, "Oh, to get the best out of X model you've got to add this to your AGENTS.md," or, "You have to prompt this certain specific way," I would rather leave some tokens on the table than have to micromanage which model I'm using based on the task.
+
+I also need to do a longer-term study on how much usage I get in a week on the GPT Pro 5x plan compared to the Claude Max 5x plan. This was something I set out to quantify, but it will need to wait.

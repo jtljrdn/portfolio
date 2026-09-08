@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import { faGithub, faLinkedinIn, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import {
+  faGithub,
+  faLinkedinIn,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import { faFile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -30,7 +34,12 @@ function groupByCompany(items: Experience[]): CompanyGroup[] {
   for (const exp of items) {
     const last = groups[groups.length - 1];
     if (last && last.company === exp.company) last.roles.push(exp);
-    else groups.push({ company: exp.company, location: exp.location, roles: [exp] });
+    else
+      groups.push({
+        company: exp.company,
+        location: exp.location,
+        roles: [exp],
+      });
   }
   return groups;
 }
@@ -116,7 +125,8 @@ function Hero() {
         <p className="mt-4 text-muted-foreground">
           Software Engineer · Full Stack Developer
         </p>
-        <div className="mt-7 flex items-center justify-center gap-6 text-muted-foreground">
+
+        <div className="mt-7 flex items-center justify-center gap-5 text-muted-foreground">
           {socials.map((s) => (
             <Link
               key={s.label}
@@ -130,6 +140,17 @@ function Hero() {
               <FontAwesomeIcon icon={s.icon} className="h-5 w-5" />
             </Link>
           ))}
+          <span aria-hidden className="h-4 w-px bg-border" />
+          <Link
+            href="/blog"
+            className="group inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 hover:text-foreground focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          >
+            Writing
+            <ArrowRight
+              aria-hidden
+              className="h-3.5 w-3.5 opacity-60 transition-[transform,opacity] duration-200 group-hover:translate-x-0.5 group-hover:opacity-100"
+            />
+          </Link>
         </div>
 
         <Contributions />
@@ -288,7 +309,9 @@ function ProjectBlock({ project }: { project: Project }) {
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="text-lg font-medium">{project.name}</h3>
         <div className="flex items-center gap-4">
-          {project.live && <ExternalLink href={project.live}>Visit</ExternalLink>}
+          {project.live && (
+            <ExternalLink href={project.live}>Visit</ExternalLink>
+          )}
           {project.github && (
             <ExternalLink href={project.github}>Code</ExternalLink>
           )}

@@ -3,7 +3,11 @@ import { getPosts } from "@/lib/mdx-utils";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
-  const posts = getPosts();
+  const posts = getPosts().sort(
+    (a, b) =>
+      new Date(b.metadata.date ?? 0).getTime() -
+      new Date(a.metadata.date ?? 0).getTime()
+  );
 
   return (
     <div className="min-h-screen flex flex-col">

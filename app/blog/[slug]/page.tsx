@@ -103,8 +103,8 @@ export default async function Blog({
           </Button>
         </nav>
       </header>
-      <main className="max-w-3xl w-full">
-        <div className="border-b pb-8 mb-8">
+      <main className={post.metadata.layout === "report" ? "max-w-5xl w-full" : "max-w-3xl w-full"}>
+        <div className="border-b pb-8 mb-8 max-w-3xl mx-auto w-full">
           {post.metadata.img && (
             <div className="mb-6 rounded-lg overflow-hidden">
               <Image
@@ -119,23 +119,23 @@ export default async function Blog({
           )}
 
           {post.metadata.date && (
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+            <p className="mb-4 text-xs uppercase tracking-widest text-muted-foreground">
               Posted on {post.metadata.date}
             </p>
           )}
 
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight font-serif ">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-balance font-serif">
             {post.metadata.title}
           </h1>
 
           {post.metadata.description && (
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="mt-5 max-w-2xl text-muted-foreground text-lg leading-relaxed text-pretty">
               {post.metadata.description}
             </p>
           )}
         </div>
 
-        <article>
+        <article className="w-full">
           <CustomMDX source={post.content} />
         </article>
       </main>
