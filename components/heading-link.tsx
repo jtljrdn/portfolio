@@ -25,7 +25,7 @@ export function HeadingLink({
         <button
           onClick={handleCopy}
           aria-label={`Copy link to ${typeof children === "string" ? children : "this section"}`}
-          className="ml-2 inline-flex opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-foreground"
+          className="ml-2 inline-flex font-mono text-[0.8em] font-normal text-zinc-600 opacity-0 transition-opacity group-hover:opacity-100 hover:text-green-400"
         >
           #
         </button>

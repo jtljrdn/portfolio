@@ -1,14 +1,5 @@
-.prose :global(h1),
-.prose :global(h2),
-.prose :global(h3),
-.prose :global(h4),
-.prose :global(h5),
-.prose :global(h6) {
-  font-family: var(--font-playfair), serif;
-}
-
 .prose {
-  color: var(--foreground);
+  color: #d4d4d8;
 }
 
 .prose > :global(p),
@@ -21,65 +12,78 @@
 .prose > :global(pre),
 .prose > :global(blockquote),
 .prose > :global(ul),
-.prose > :global(ol) {
-  max-width: 48rem;
-  margin-inline: auto;
+.prose > :global(ol),
+.prose > :global(hr) {
+  max-width: 42rem;
 }
 
 .prose :global(p) {
-  margin-block: 1.15rem;
-  font-size: 1.02rem;
-  line-height: 1.82;
+  margin-block: 1.1rem;
+  font-size: 0.97rem;
+  line-height: 1.8;
   text-wrap: pretty;
 }
 
-.prose :global(h2) {
-  margin-top: 3.75rem;
-  margin-bottom: 1.1rem;
-  font-size: clamp(1.7rem, 4vw, 2.25rem);
+.prose :global(h1),
+.prose :global(h2),
+.prose :global(h3),
+.prose :global(h4),
+.prose :global(h5),
+.prose :global(h6) {
+  color: #fafafa;
   font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.15;
+  scroll-margin-top: 2rem;
+}
+
+.prose :global(h2) {
+  margin-top: 3rem;
+  margin-bottom: 0.9rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .prose :global(h3) {
-  margin-top: 2.6rem;
-  margin-bottom: 0.85rem;
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  margin-top: 2.25rem;
+  margin-bottom: 0.7rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
 }
 
 .prose :global(pre) {
   overflow-x: auto;
-  margin-block: 1.8rem;
-  padding: 1.25rem 1.35rem;
-  border: 1px solid oklch(0.83 0.012 75);
-  border-radius: 0.65rem;
-  color: oklch(0.91 0.01 180);
-  background: oklch(0.19 0.012 205);
-  box-shadow: 0 1rem 2.5rem oklch(0.3 0.02 70 / 0.1);
-  font-size: 0.88rem;
-  line-height: 1.65;
+  margin-block: 1.6rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid #27272a;
+  border-radius: 0.5rem;
+  color: #e4e4e7;
+  background: #111113;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.8rem;
+  line-height: 1.7;
   white-space: pre-wrap;
 }
 
 .prose :global(code) {
+  font-family: var(--font-jetbrains), monospace;
   font-variant-ligatures: none;
 }
 
-.prose :global(p code) {
-  padding: 0.12rem 0.3rem;
+.prose :global(p code),
+.prose :global(li code) {
+  padding: 0.1rem 0.35rem;
+  border: 1px solid #27272a;
   border-radius: 0.25rem;
-  background: var(--muted);
-  font-size: 0.88em;
+  color: #e4e4e7;
+  background: #18181b;
+  font-size: 0.82em;
 }
 
 .prose :global(blockquote) {
-  margin-block: 1.75rem;
-  padding: 0.2rem 0 0.2rem 1.25rem;
-  border-left: 2px solid oklch(0.54 0.08 62);
-  color: var(--muted-foreground);
+  margin-block: 1.6rem;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  border-left: 2px solid rgb(74 222 128 / 0.5);
+  color: #a1a1aa;
 }
 
 .prose :global(blockquote p) {
@@ -88,42 +92,62 @@
 
 .prose :global(ul),
 .prose :global(ol) {
-  margin-block: 1.2rem;
-  padding-left: 1.5rem;
+  margin-block: 1.1rem;
+  padding-left: 1.25rem;
+  font-size: 0.97rem;
+}
+
+.prose :global(ul) {
+  list-style: disc;
+}
+
+.prose :global(ol) {
+  list-style: decimal;
 }
 
 .prose :global(li) {
-  margin-block: 0.45rem;
-  line-height: 1.7;
+  margin-block: 0.4rem;
+  line-height: 1.75;
+}
+
+.prose :global(li::marker) {
+  color: #52525b;
 }
 
 .prose :global(strong) {
-  font-weight: 700;
+  color: #fafafa;
+  font-weight: 600;
 }
 
 .prose :global(hr) {
-  max-width: 48rem;
-  margin: 3rem auto;
+  margin-block: 2.75rem;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #18181b;
+}
+
+.prose :global(img) {
+  border: 1px solid #27272a;
+  border-radius: 0.5rem;
 }
 
 .a {
-  color: inherit;
-  font-weight: 500;
+  color: #fafafa;
   text-decoration: underline;
-  text-decoration-color: oklch(0.708 0 0);
+  text-decoration-color: #52525b;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  transition: text-decoration-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
 }
 
 .a:hover {
+  color: #4ade80;
   text-decoration-color: currentColor;
 }
 
 .a:focus-visible {
   border-radius: 0.15rem;
-  outline: 2px solid var(--ring);
+  outline: 2px solid #52525b;
   outline-offset: 3px;
 }

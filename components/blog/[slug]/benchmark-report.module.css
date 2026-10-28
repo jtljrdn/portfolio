@@ -5,25 +5,26 @@
 }
 
 .report {
-  --sonnet: oklch(0.68 0.018 70);
-  --opus: oklch(0.54 0.08 62);
-  --terra: oklch(0.48 0.07 174);
-  --sol: oklch(0.38 0.08 228);
+  --sonnet: #71717a;
+  --opus: #f59e0b;
+  --terra: #34d399;
+  --sol: #60a5fa;
 }
 
 .videoFrame {
   overflow: hidden;
   padding: 0.25rem;
-  border-radius: 0.4rem;
-  background: oklch(0.19 0.012 205);
+  border: 1px solid #27272a;
+  border-radius: 0.5rem;
+  background: #111113;
 }
 
 .videoFrame video {
   display: block;
   width: 100%;
   aspect-ratio: 1302 / 532;
-  border-radius: 0.2rem;
-  background: oklch(0.19 0.012 205);
+  border-radius: 0.3rem;
+  background: #111113;
 }
 
 .videoFigure figcaption,
@@ -31,12 +32,14 @@
 .tableFigure figcaption {
   margin-top: 0.75rem;
   color: var(--muted-foreground);
-  font-size: 0.78rem;
-  line-height: 1.5;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.7rem;
+  line-height: 1.6;
 }
 
 .methodLine {
   display: flex;
+  font-family: var(--font-jetbrains), monospace;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.45rem 1.5rem;
@@ -88,16 +91,17 @@
 
 .figureHeader h3 {
   margin: 0;
-  font-family: var(--font-playfair), serif;
-  font-size: 1.25rem;
+  color: #fafafa;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.15;
 }
 
 .legend,
 .unit {
   display: flex;
+  font-family: var(--font-jetbrains), monospace;
   gap: 0.75rem;
   color: var(--muted-foreground);
   font-size: 0.68rem;
@@ -190,14 +194,14 @@
   overflow: hidden;
   border: 0;
   border-radius: 0.08rem;
-  background: oklch(0.915 0.006 78);
+  background: #1f1f23;
   appearance: none;
 }
 
 .scoreTrack progress::-webkit-progress-bar,
 .costRow progress::-webkit-progress-bar {
   border-radius: 0.08rem;
-  background: oklch(0.915 0.006 78);
+  background: #1f1f23;
 }
 
 .scoreTrack progress::-webkit-progress-value,
@@ -270,10 +274,11 @@
 }
 
 .tableFigure thead th {
-  border-bottom-color: oklch(0.72 0.01 75);
+  border-bottom-color: #3f3f46;
   color: var(--muted-foreground);
-  font-size: 0.63rem;
-  font-weight: 700;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -296,7 +301,7 @@
 .tableFigure tbody tr:nth-child(4) > *,
 .tableFigure tbody tr:nth-child(8) > *,
 .tableFigure tbody tr:nth-child(11) > * {
-  border-top: 1px solid oklch(0.72 0.01 75);
+  border-top: 1px solid #3f3f46;
 }
 
 .modelMark {
@@ -314,11 +319,11 @@
 }
 
 .pass {
-  color: oklch(0.36 0.075 164);
+  color: #4ade80;
 }
 
 .partial {
-  color: oklch(0.47 0.08 54);
+  color: #fbbf24;
 }
 
 .pass::before,

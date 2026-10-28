@@ -1,11 +1,11 @@
 const USER = "jtljrdn";
 
 const LEVEL_CLASS = [
-  "bg-foreground/[0.07]",
-  "bg-emerald-700/25 dark:bg-emerald-400/15",
-  "bg-emerald-700/45 dark:bg-emerald-400/30",
-  "bg-emerald-700/65 dark:bg-emerald-400/50",
-  "bg-emerald-700/85 dark:bg-emerald-400/75",
+  "bg-zinc-900",
+  "bg-contrib-1",
+  "bg-contrib-2",
+  "bg-contrib-3",
+  "bg-contrib-4",
 ];
 
 const MONTHS = [
@@ -95,39 +95,46 @@ export default async function Contributions() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${total} GitHub contributions in the last year`}
-      className="group mt-10 block sm:mt-12"
+      className="group mt-8 block"
     >
-      <div className="mx-auto w-full max-w-[583px]">
-        <div
-          className="grid gap-px text-[9px] text-muted-foreground sm:gap-[2px]"
-          style={cols}
-          aria-hidden
-        >
-          {labels.map((m, i) => (
-            <span
-              key={m.col}
-              style={{ gridColumnStart: m.col + 1 }}
-              className={`pb-1 text-left ${i % 2 ? "hidden sm:block" : ""}`}
-            >
-              {m.name}
-            </span>
-          ))}
-        </div>
+      <div
+        className="grid gap-[2px] font-mono text-[10px] text-zinc-600"
+        style={cols}
+        aria-hidden
+      >
+        {labels.map((m, i) => (
+          <span
+            key={m.col}
+            style={{ gridColumnStart: m.col + 1 }}
+            className={`pb-1.5 ${i % 2 ? "hidden sm:block" : ""}`}
+          >
+            {m.name}
+          </span>
+        ))}
+      </div>
 
-        <div className="grid gap-px sm:gap-[2px]" style={cols} aria-hidden>
-          {days.map((d) => (
-            <span
-              key={d.date}
-              title={d.label}
-              style={{ gridRowStart: d.row + 1, gridColumnStart: d.col + 1 }}
-              className={`aspect-square rounded-[2px] sm:rounded-[3px] ${LEVEL_CLASS[d.level] ?? LEVEL_CLASS[0]}`}
-            />
-          ))}
-        </div>
+      <div className="grid gap-px sm:gap-[2px]" style={cols} aria-hidden>
+        {days.map((d) => (
+          <span
+            key={d.date}
+            title={d.label}
+            style={{ gridRowStart: d.row + 1, gridColumnStart: d.col + 1 }}
+            className={`aspect-square rounded-[2px] ${LEVEL_CLASS[d.level] ?? LEVEL_CLASS[0]}`}
+          />
+        ))}
+      </div>
 
-        <p className="mt-3 text-left text-sm text-muted-foreground transition-colors group-hover:text-foreground">
-          {total} contributions in the last year
-        </p>
+      <div className="mt-2.5 flex items-center justify-between font-mono text-[11px] text-zinc-500">
+        <span className="transition-colors group-hover:text-zinc-300">
+          {total} contributions in the last year ↗
+        </span>
+        <span className="hidden items-center gap-[3px] sm:flex" aria-hidden>
+          <span className="mr-1">less</span>
+          {LEVEL_CLASS.map((c) => (
+            <span key={c} className={`size-2 rounded-[2px] ${c}`} />
+          ))}
+          <span className="ml-1">more</span>
+        </span>
       </div>
     </a>
   );

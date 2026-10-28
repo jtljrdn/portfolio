@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Nunito_Sans, Playfair_Display } from "next/font/google";
+import {
+  Inter,
+  JetBrains_Mono,
+  Nunito_Sans,
+  Playfair_Display,
+} from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -11,6 +16,16 @@ const nunito = Nunito_Sans({
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${nunito.className} ${nunito.variable} ${playfair.variable} antialiased`}
+        className={`${nunito.className} ${nunito.variable} ${playfair.variable} ${inter.variable} ${jetbrains.variable} antialiased`}
       >
         {children}
         <Analytics />

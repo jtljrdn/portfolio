@@ -1,61 +1,56 @@
 import Link from "next/link";
-import { getPosts } from "@/lib/mdx-utils";
-import { ArrowRight } from "lucide-react";
+import BlogNav from "@/components/site/blog-nav";
+import SiteShell from "@/components/site/shell";
+import { fullDate, posts } from "@/lib/site";
 
-export default function Home() {
-  const posts = getPosts().sort(
-    (a, b) =>
-      new Date(b.metadata.date ?? 0).getTime() -
-      new Date(a.metadata.date ?? 0).getTime()
-  );
-
+export default function Blog() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex flex-col items-center justify-center p-8 pb-20 gap-12 sm:p-20">
-        <div className="w-full max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight font-serif">Ramblings</h1>
-          <p className="text-muted-foreground mt-3">
-            A collection of my thoughts, ideas, and projects. I write about
-            software development, technology, and anything else that comes to
-            mind.
-          </p>
-        </div>
+    <SiteShell
+      path={[
+        { label: "jordan", href: "/" },
+        { label: "writing", href: "/blog" },
+      ]}
+      nav={<BlogNav />}
+    >
+      <div className="max-w-xl pt-8 text-[15px] leading-relaxed text-pretty sm:text-base">
+        <h1 className="inline text-zinc-200">Ramblings.</h1>{" "}
+        <p className="inline text-zinc-500">
+          A collection of my thoughts, ideas, and projects. I write about
+          software development, technology, and anything else that comes to
+          mind.
+        </p>
+      </div>
 
-        <div className="w-full max-w-2xl divide-y divide-border">
+      <section className="mt-12">
+        <h2 className="flex justify-between border-b border-zinc-900 pb-2.5 font-mono text-[11px] tracking-[0.08em] text-zinc-500 uppercase">
+          <span>Posts</span>
+          <span className="tracking-normal text-zinc-700">{posts.length}</span>
+        </h2>
+        <ul>
           {posts.map((post) => (
-            <Link
-              href={`/blog/${post.slug}`}
-              key={post.slug}
-              className="group block py-6 first:pt-0 last:pb-0"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5">
-                    {post.metadata.date}
-                  </p>
-                  <h2 className="text-lg font-semibold leading-snug font-serif group-hover:text-muted-foreground transition-colors duration-200">
+            <li key={post.slug}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group grid gap-x-4 gap-y-1 border-b border-zinc-900/70 py-4 sm:grid-cols-[96px_minmax(0,1fr)]"
+              >
+                <span className="pt-0.5 font-mono text-[11px] text-zinc-600">
+                  {fullDate.format(post.time)}
+                </span>
+                <span>
+                  <span className="block text-sm font-medium text-zinc-200 transition-colors group-hover:text-green-400">
                     {post.metadata.title}
-                  </h2>
+                  </span>
                   {post.metadata.description && (
-                    <p className="text-muted-foreground text-sm mt-1.5 line-clamp-2">
+                    <span className="mt-1 line-clamp-2 block text-[13px] leading-relaxed text-zinc-500">
                       {post.metadata.description}
-                    </p>
+                    </span>
                   )}
-                </div>
-                <ArrowRight className="w-4 h-4 mt-6 text-muted-foreground opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0" />
-              </div>
-            </Link>
+                </span>
+              </Link>
+            </li>
           ))}
-        </div>
-      </main>
-      <footer className="flex gap-6 items-center justify-center text-sm text-muted-foreground pb-12">
-        <Link href="/" className="hover:text-foreground transition-colors">
-          Me
-        </Link>
-        <Link href="/blog" className="hover:text-foreground transition-colors">
-          Blog
-        </Link>
-      </footer>
-    </div>
+        </ul>
+      </section>
+    </SiteShell>
   );
 }
